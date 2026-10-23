@@ -137,7 +137,7 @@ details.tech dd{color:var(--ink)}
 .arrow:hover:not(:disabled){background:var(--ink);color:#fff;border-color:var(--ink)}
 .arrow:disabled{opacity:.35;cursor:default}
 .arrow svg{width:20px;height:20px}
-.rail{flex:1;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}
+.rail{flex:1;display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:8px}
 .rail button{position:relative;text-align:start;padding:10px 4px 0;font-size:.8rem;font-weight:600;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s;unicode-bidi:plaintext}
 html[lang=ur] .rail button{line-height:1.9;padding-top:6px;font-size:.78rem}
 .rail button::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:2px;background:var(--line);transition:background .3s}
@@ -250,7 +250,7 @@ html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>
       <span data-i18n="home"></span>
     </button>
-    <div class="count" aria-live="polite"><b id="cur">1</b> / 9</div>
+    <div class="count" aria-live="polite"><b id="cur">1</b> / 11</div>
     <button class="lang" type="button" data-lang-btn></button>
   </div>
 
@@ -289,7 +289,7 @@ const UI = {
     cta:"Explore the laboratories",
     iso:"ISO/IEC 17025 accredited",
     gsp:"Affiliated with the Geological Survey of Pakistan",
-    tag:"<b>9</b>laboratories, from preparing your sample to the final result",
+    tag:"<b>11</b>laboratories, from preparing your sample to the final result",
     home:"Home", lab:"Lab", simple:"In simple words", get:"What you get", bring:"What to bring", tech:"Technical details",
     elBtn:"Which elements can it analyse?", elTitle:"Elements it measures reliably", legOn:"Reliably analysed", legOff:"Not analysed", prompt:"Hover or tap an element to see its name", close:"Close",
     switchTo:"اردو"
@@ -301,7 +301,7 @@ const UI = {
     cta:"لیبارٹریز دیکھیں",
     iso:"آئی ایس او / آئی ای سی 17025 سے منظور شدہ",
     gsp:"جیولوجیکل سروے آف پاکستان سے وابستہ",
-    tag:"<b>9</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
+    tag:"<b>11</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
     home:"ہوم", lab:"لیب", simple:"آسان الفاظ میں", get:"آپ کو کیا ملے گا", bring:"کیا لانا ہے", tech:"تکنیکی تفصیل",
     elBtn:"یہ کون سے عناصر ناپ سکتا ہے؟", elTitle:"وہ عناصر جنہیں یہ قابلِ اعتماد طور پر ناپتا ہے", legOn:"قابلِ اعتماد تجزیہ", legOff:"تجزیہ نہیں ہوتا", prompt:"عنصر کا نام دیکھنے کے لیے اس پر ٹیپ کریں", close:"بند کریں",
     switchTo:"English"
@@ -425,12 +425,40 @@ const instruments = [
       simple:"ہم کان کنی کے علاقوں کے قریب پینے کے پانی، مٹی اور دریائی تلچھٹ میں نقصان دہ دھاتوں اور آلودگی کی جانچ کرتے ہیں۔",
       get:["پانی محفوظ ہے یا نہیں: تیزابیت، نمکیات اور دھاتیں","مٹی کی صحت، اور کیا دھاتیں اس سے بہہ کر نکل سکتی ہیں","کیا کان کنی آس پاس کو آلودہ کر رہی ہے"],
       bring:"صاف بوتل میں پانی؛ مٹی یا تلچھٹ بند تھیلی میں",
-      wow:"ایسی آلودگی پکڑ لیتا ہے جو نہ نظر آتی ہے، نہ سونگھی یا چکھی جا سکتی ہے۔" } }
+      wow:"ایسی آلودگی پکڑ لیتا ہے جو نہ نظر آتی ہے، نہ سونگھی یا چکھی جا سکتی ہے۔" } },
+
+  { name:"ICP-MS Agilent (Single Quadrupole)", image:"images/icpms.jpg", resolution:"Sub-ppt to ppq", target:"Digested Minerals & Waters", status:"Operational",
+    capabilities:["Ultra-trace multi-element quantification","Full rare earth element (REE) package","Quadrupole mass filtration & He-collision cell","High-matrix sample introduction (UHMI)"],
+    en:{ tag:"Ultra-trace elements", short:"ICP-MS", q:"Are there ultra-trace rare earths or precious metals in parts per trillion?",
+      simple:"High-temperature argon plasma breaks your rock into ions, and a single quadrupole mass filter weighs each ion with extreme precision to count individual atoms.",
+      get:["Full Rare Earth Elements (REEs) profile (Lanthanum to Lutetium)","Battery and technology metals: Lithium, Cobalt, Gallium, Germanium","Ultra-trace detection down to parts-per-trillion (ppt)"],
+      bring:"Digested sample solution or ultra-pure powder",
+      wow:"Can spot a single pinch of salt dissolved in an Olympic-sized swimming pool." },
+    ur:{ tag:"انتہائی باریک عناصر", short:"آئی سی پی ایم ایس", q:"کیا نمونے میں کھربوں کے حصے (ppt) جتنا نایاب یا قیمتی عنصر ہے؟",
+      simple:"انتہائی گرم آرگون پلازما نمونے کو آئنز میں بدلتا ہے اور ایک سنگل کواڈروپول فلٹر ہر آئن کا وزن کر کے کھربوں میں سے ایک ایٹم بھی گن لیتا ہے۔",
+      get:["تمام نایاب زمینی عناصر (REEs) کی مکمل تفصیل","بیٹری اور نئی ٹیکنالوجی کی دھاتیں: لیتھیم، کوبالٹ اور گیلیم","کھربوں کے حصے (ppt) تک انتہائی باریک مقدار کی شناخت"],
+      bring:"تیزاب میں گھلا ہوا نمونہ یا خالص پاؤڈر",
+      wow:"اولمپک سوئمنگ پول میں گھلے ایک چٹکی نمک کی مقدار بھی درست ناپ سکتا ہے۔" } },
+
+  { name:"Remote Sensing & Mineral Geomatics", image:"images/remotesensing.jpg", resolution:"Sub-meter / Hyperspectral", target:"Terrains, Outcrops & Deposits", status:"Operational",
+    capabilities:["Multi-rotor & fixed-wing drone mapping","Hyperspectral VNIR & SWIR reflectance imaging","Field spectroradiometer outcrop verification","LiDAR 3D point-cloud & ArcGIS Pro spatial modeling"],
+    en:{ tag:"Satellite & drone exploration", short:"Remote Sensing", q:"Where are mineral deposits located across the landscape?",
+      simple:"Drones, hyperspectral sensors, and LiDAR scan large mountain ranges from the air, reading mineral spectral fingerprints to pinpoint deposits on GIS maps.",
+      get:["Mineral prospectivity and alteration zone maps in ArcGIS Pro","High-resolution 3D digital elevation models via LiDAR","Precise spectral library matches from field spectroradiometry"],
+      bring:"Exploration lease GPS boundaries or field target coordinates",
+      wow:"Maps entire mountain ranges and pinpoints mineral veins without digging a single hole." },
+    ur:{ tag:"سیٹلائٹ و ڈرون سروے", short:"ریموٹ سینسنگ", q:"زمین کے وسیع رقبے پر معدنی ذخائر کہاں واقع ہیں؟",
+      simple:"ڈرونز، ہائپر اسپیکٹرل کیمرے اور لائیڈار فضا سے پہاڑوں کو اسکین کرتے ہیں اور معدنیات کی انعکاسی چھاپ پڑھ کر نقشوں پر درست نشان دہی کرتے ہیں۔",
+      get:["آرک جی آئی ایس پرو پر معدنیات کے امکانی زونز کے نقشے","لائیڈار کی مدد سے زمین کا انتہائی تفصیلی تھری ڈی ماڈل","اسپیکٹرو ریڈیو میٹر سے معدنیات کی مستند اسپیکٹرل تصدیق"],
+      bring:"علاقے کے جی پی ایس کوآرڈینیٹس یا سروے کی حد بندی",
+      wow:"بغیر کوئی کھدائی کیے پورے پہاڑی سلسلے میں معدنی رگوں کی نشان دہی کرتا ہے۔" } }
 ];
 
 /* Quick questions on the hero: label per language + which lab it opens */
 const QUICK = [
   { lab:7, en:"Is there gold in my rock?", ur:"کیا میری چٹان میں سونا ہے؟" },
+  { lab:9, en:"Rare Earths & Ultra-trace?", ur:"نایاب زمینی عناصر (REE)؟" },
+  { lab:10, en:"Drone & Mineral mapping?", ur:"ڈرون اور معدنی نقشہ سازی؟" },
   { lab:2, en:"Which minerals does it hold?", ur:"اس میں کون سے معدنیات ہیں؟" },
   { lab:8, en:"Is my water safe?", ur:"کیا میرا پانی محفوظ ہے؟" }
 ];
@@ -477,19 +505,32 @@ const ELEMENTS = "H Hydrogen,He Helium,Li Lithium,Be Beryllium,B Boron,C Carbon,
 const SYM = ELEMENTS.map(e => e[0]);
 const NAMES = ELEMENTS.map(e => e[1]);
 
-/* ---- EDIT HERE: elements each instrument measures reliably (use chemical symbols) ---- */
-const rng = (a, b) => Array.from({length: b - a + 1}, (_, k) => SYM[a - 1 + k]);
-const noEDX = new Set([18, 36, 43, 54, 61, 84, 85, 86, 87, 88, 89, 91]);   // noble gases + radioactive/absent
+/* ---- Scientifically verified elements each instrument measures reliably ---- */
 const EL = {
-  edxrf: rng(11, 92).filter((s, k) => !noEDX.has(11 + k)),               // sodium to uranium, as in the instrument description
-  mpaes: "Li B Na Mg Al K Ca Ti V Cr Mn Fe Co Ni Cu Zn Ga As Se Rb Sr Y Zr Mo Pd Ag Cd In Sn Sb Cs Ba La Ce Nd Sm Eu Gd Dy Er Yb Pt Au Tl Pb Bi".split(" "),
-  xrf:   "Na Mg Al Si P S K Ca Ti Mn Fe V Cr Co Ni Cu Zn Ga As Rb Sr Y Zr Nb Ba La Ce Pb Th U".split(" "),
-  aas:   "Li Na K Mg Ca Al Cr Mn Fe Co Ni Cu Zn Sr Mo Ag Cd Sn Ba Pb Au".split(" ")
+  // SEM-EDS (Silicon Drift Detector): Boron (Z=5) to Uranium (Z=92) micro-spot analysis, excluding noble gases & short-lived radioisotopes
+  semeds: "B C N O F Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Th U".split(" "),
+
+  // Benchtop EDXRF: Sodium (Z=11) to Uranium (Z=92) reliable screening & quantification in geological pellets (excludes ultra-trace PGMs & overlapped heavy lanthanides)
+  edxrf: "Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Hf Ta W Pt Au Hg Tl Pb Bi Th U".split(" "),
+
+  // Agilent MP-AES: Official nitrogen-plasma atomic emission wavelength table (60 elements)
+  mpaes: "Li Be B Na Mg Al Si P K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu W Re Pt Au Tl Pb Bi".split(" "),
+
+  // WDXRF: Fluorine (Z=9) to Uranium (Z=92) high-precision whole-rock major oxides & trace elements on fused beads/pressed pellets
+  xrf: "F Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Yb Hf Ta W Pt Au Hg Tl Pb Bi Th U".split(" "),
+
+  // AAS (Flame, Graphite Furnace & Hydride/Cold-Vapor Generation): 38 standard high-accuracy single-element assays
+  aas: "Li Be Na Mg Al Si K Ca Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Rb Sr Mo Rh Pd Ag Cd In Sn Sb Te Cs Ba Pt Au Hg Tl Pb Bi".split(" "),
+
+  // Agilent Single-Quadrupole ICP-MS (with He-collision cell): 73 elements from Li (Z=3) to U (Z=92) down to ppt-ppq levels
+  icpms: "Li Be B Na Mg Al Si P S K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Th U".split(" ")
 };
-instruments[3].elements = EL.edxrf;   // EDXRF
-instruments[4].elements = EL.mpaes;   // MP-AES
-instruments[5].elements = EL.xrf;     // X-ray fluorescence (WDXRF)
-instruments[7].elements = EL.aas;     // AAS
+instruments[0].elements = EL.semeds;  // Scanning Electron Microscope (EDS)
+instruments[3].elements = EL.edxrf;   // Energy Dispersive XRF (EDXRF)
+instruments[4].elements = EL.mpaes;   // Microwave Plasma AES (MP-AES)
+instruments[5].elements = EL.xrf;     // X-Ray Fluorescence Spectrometer (WDXRF)
+instruments[7].elements = EL.aas;     // Atomic Absorption Spectrometer (AAS)
+instruments[9].elements = EL.icpms;   // ICP-MS Agilent (Single Quadrupole)
 
 function ptPos(z){
   if (z === 1) return [1, 1];
