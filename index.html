@@ -146,6 +146,46 @@ html[lang=ur] .rail button{line-height:1.9;padding-top:6px;font-size:.78rem}
 .rail button.seen::before{background:#9FBFC4}
 .rail button.on.seen::before{background:var(--copper)}
 
+/* ---------- periodic table button + pop-up ---------- */
+.ptbtn{margin-top:clamp(12px,2vh,20px);display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:14px;background:var(--paper);border:1px solid var(--line);font-weight:600;font-size:.92rem;color:var(--ink);text-align:start;transition:border-color .2s,background .2s}
+html[dir=rtl] .ptbtn{padding:8px 8px 8px 16px}
+.ptbtn:hover{border-color:var(--teal);background:#F0F8F8}
+.ptbtn .ic{width:36px;height:36px;border-radius:10px;background:var(--teal);display:grid;place-items:center;flex:none}
+.ptbtn .ic svg{width:20px;height:20px}
+.ptbtn .cnt{background:var(--tint);color:var(--teal-d);border-radius:999px;padding:2px 10px;font-size:.8rem;flex:none;font-family:'Bricolage Grotesque','Segoe UI',sans-serif}
+html[lang=ur] .ptbtn{line-height:1.9;font-size:.85rem}
+
+.modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:clamp(10px,2.5vw,32px);background:rgba(15,42,54,.45);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.modal.show{opacity:1;visibility:visible}
+.sheet{width:min(1180px,100%);max-height:100%;overflow:auto;background:var(--paper);border-radius:clamp(20px,2.4vw,32px);padding:clamp(16px,2.4vw,32px);box-shadow:0 30px 80px -20px rgba(15,42,54,.45);transform:translateY(24px) scale(.98);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.modal.show .sheet{transform:none}
+.sheet header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:clamp(10px,1.8vh,18px)}
+.sheet h2{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.15;letter-spacing:-.02em}
+html[lang=ur] .sheet h2{line-height:1.7;font-size:clamp(1.15rem,2vw,1.7rem)}
+.sheet header p{margin-top:4px;color:var(--ink-2);font-size:.95rem}
+.x{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .2s,color .2s}
+.x:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.x svg{width:18px;height:18px}
+.ptwrap{overflow-x:auto;direction:ltr;padding-bottom:4px}
+.pt{container-type:inline-size;display:grid;grid-template-columns:repeat(18,1fr);grid-template-rows:repeat(7,1fr) .3fr repeat(2,1fr);gap:3px;aspect-ratio:18/9.6;min-width:700px;width:min(100%,calc((100dvh - 260px) * 1.8));margin-inline:auto}
+.cell{position:relative;border-radius:clamp(3px,.5cqw,8px);display:flex;flex-direction:column;align-items:center;justify-content:center;background:#EEF2F5;color:#A8B8C0;line-height:1;cursor:default;user-select:none;transition:background .35s var(--d,0ms),color .35s var(--d,0ms),transform .15s,box-shadow .15s}
+.cell i{font-style:normal;font-size:max(7.5px,.85cqw);opacity:.8;margin-bottom:2px}
+.cell b{font-family:'Bricolage Grotesque','Segoe UI',sans-serif;font-weight:600;font-size:max(12px,2.1cqw)}
+.pt.lit .cell.on{background:var(--teal);color:#fff}
+.cell.sel{transform:scale(1.14);z-index:2;box-shadow:0 8px 20px -6px rgba(15,42,54,.35);outline:2px solid var(--ink)}
+.lbl{grid-column:3;display:grid;place-items:center;text-align:center;font-size:max(7px,.8cqw);color:var(--ink-3);font-family:'Figtree','Segoe UI',sans-serif}
+.ptfoot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;margin-top:clamp(10px,1.8vh,16px)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.9rem;color:var(--ink-2)}
+.legend>span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:16px;height:16px;border-radius:5px;background:#EEF2F5;border:1px solid #D4DEE3}
+.sw.on{background:var(--teal);border-color:var(--teal)}
+.read{font-size:1rem;color:var(--ink-2);min-height:1.6em}
+.read b{font-family:'Bricolage Grotesque','Segoe UI',sans-serif;font-size:1.3rem;color:var(--ink);margin-inline-end:6px}
+.read .yes{color:var(--teal);font-weight:600;margin-inline-start:8px}
+.read .no{color:var(--ink-3);margin-inline-start:8px}
+html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
 /* ---------- responsive ---------- */
 @media (max-width:900px){
   #hero{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 24dvh}
@@ -223,6 +263,22 @@ html[lang=ur] .rail button{line-height:1.9;padding-top:6px;font-size:.78rem}
   </div>
 </section>
 
+<!-- ================= PERIODIC TABLE POP-UP ================= -->
+<div class="modal" id="ptModal" role="dialog" aria-modal="true" aria-labelledby="ptTitle">
+  <div class="sheet">
+    <header>
+      <div><h2 id="ptTitle"></h2><p id="ptSub" dir="ltr"></p></div>
+      <button class="x" id="ptClose" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </header>
+    <div class="ptwrap"><div class="pt" id="pt"></div></div>
+    <p class="sr" id="ptList"></p>
+    <div class="ptfoot">
+      <div class="legend"><span><i class="sw on"></i><span id="legOn"></span></span><span><i class="sw"></i><span id="legOff"></span></span></div>
+      <div class="read" id="readout" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============ Interface text (English / Urdu) ============ */
 const UI = {
@@ -235,6 +291,7 @@ const UI = {
     gsp:"Affiliated with the Geological Survey of Pakistan",
     tag:"<b>9</b>laboratories, from preparing your sample to the final result",
     home:"Home", lab:"Lab", simple:"In simple words", get:"What you get", bring:"What to bring", tech:"Technical details",
+    elBtn:"Which elements can it analyse?", elTitle:"Elements it measures reliably", legOn:"Reliably analysed", legOff:"Not analysed", prompt:"Hover or tap an element to see its name", close:"Close",
     switchTo:"اردو"
   },
   ur: {
@@ -246,6 +303,7 @@ const UI = {
     gsp:"جیولوجیکل سروے آف پاکستان سے وابستہ",
     tag:"<b>9</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
     home:"ہوم", lab:"لیب", simple:"آسان الفاظ میں", get:"آپ کو کیا ملے گا", bring:"کیا لانا ہے", tech:"تکنیکی تفصیل",
+    elBtn:"یہ کون سے عناصر ناپ سکتا ہے؟", elTitle:"وہ عناصر جنہیں یہ قابلِ اعتماد طور پر ناپتا ہے", legOn:"قابلِ اعتماد تجزیہ", legOff:"تجزیہ نہیں ہوتا", prompt:"عنصر کا نام دیکھنے کے لیے اس پر ٹیپ کریں", close:"بند کریں",
     switchTo:"English"
   }
 };
@@ -414,6 +472,106 @@ function strata(svg, W, H, hue, animate){
 }
 strata(document.getElementById("heroStrata"), 800, 900, 190, true);
 
+/* ============ Periodic table pop-up ============ */
+const ELEMENTS = "H Hydrogen,He Helium,Li Lithium,Be Beryllium,B Boron,C Carbon,N Nitrogen,O Oxygen,F Fluorine,Ne Neon,Na Sodium,Mg Magnesium,Al Aluminium,Si Silicon,P Phosphorus,S Sulfur,Cl Chlorine,Ar Argon,K Potassium,Ca Calcium,Sc Scandium,Ti Titanium,V Vanadium,Cr Chromium,Mn Manganese,Fe Iron,Co Cobalt,Ni Nickel,Cu Copper,Zn Zinc,Ga Gallium,Ge Germanium,As Arsenic,Se Selenium,Br Bromine,Kr Krypton,Rb Rubidium,Sr Strontium,Y Yttrium,Zr Zirconium,Nb Niobium,Mo Molybdenum,Tc Technetium,Ru Ruthenium,Rh Rhodium,Pd Palladium,Ag Silver,Cd Cadmium,In Indium,Sn Tin,Sb Antimony,Te Tellurium,I Iodine,Xe Xenon,Cs Caesium,Ba Barium,La Lanthanum,Ce Cerium,Pr Praseodymium,Nd Neodymium,Pm Promethium,Sm Samarium,Eu Europium,Gd Gadolinium,Tb Terbium,Dy Dysprosium,Ho Holmium,Er Erbium,Tm Thulium,Yb Ytterbium,Lu Lutetium,Hf Hafnium,Ta Tantalum,W Tungsten,Re Rhenium,Os Osmium,Ir Iridium,Pt Platinum,Au Gold,Hg Mercury,Tl Thallium,Pb Lead,Bi Bismuth,Po Polonium,At Astatine,Rn Radon,Fr Francium,Ra Radium,Ac Actinium,Th Thorium,Pa Protactinium,U Uranium,Np Neptunium,Pu Plutonium,Am Americium,Cm Curium,Bk Berkelium,Cf Californium,Es Einsteinium,Fm Fermium,Md Mendelevium,No Nobelium,Lr Lawrencium,Rf Rutherfordium,Db Dubnium,Sg Seaborgium,Bh Bohrium,Hs Hassium,Mt Meitnerium,Ds Darmstadtium,Rg Roentgenium,Cn Copernicium,Nh Nihonium,Fl Flerovium,Mc Moscovium,Lv Livermorium,Ts Tennessine,Og Oganesson".split(",").map(s => s.split(" "));
+const SYM = ELEMENTS.map(e => e[0]);
+const NAMES = ELEMENTS.map(e => e[1]);
+
+/* ---- EDIT HERE: elements each instrument measures reliably (use chemical symbols) ---- */
+const rng = (a, b) => Array.from({length: b - a + 1}, (_, k) => SYM[a - 1 + k]);
+const noEDX = new Set([18, 36, 43, 54, 61, 84, 85, 86, 87, 88, 89, 91]);   // noble gases + radioactive/absent
+const EL = {
+  edxrf: rng(11, 92).filter((s, k) => !noEDX.has(11 + k)),               // sodium to uranium, as in the instrument description
+  mpaes: "Li B Na Mg Al K Ca Ti V Cr Mn Fe Co Ni Cu Zn Ga As Se Rb Sr Y Zr Mo Pd Ag Cd In Sn Sb Cs Ba La Ce Nd Sm Eu Gd Dy Er Yb Pt Au Tl Pb Bi".split(" "),
+  xrf:   "Na Mg Al Si P S K Ca Ti Mn Fe V Cr Co Ni Cu Zn Ga As Rb Sr Y Zr Nb Ba La Ce Pb Th U".split(" "),
+  aas:   "Li Na K Mg Ca Al Cr Mn Fe Co Ni Cu Zn Sr Mo Ag Cd Sn Ba Pb Au".split(" ")
+};
+instruments[3].elements = EL.edxrf;   // EDXRF
+instruments[4].elements = EL.mpaes;   // MP-AES
+instruments[5].elements = EL.xrf;     // X-ray fluorescence (WDXRF)
+instruments[7].elements = EL.aas;     // AAS
+
+function ptPos(z){
+  if (z === 1) return [1, 1];
+  if (z === 2) return [1, 18];
+  if (z <= 4)  return [2, z - 2];
+  if (z <= 10) return [2, z + 8];
+  if (z <= 12) return [3, z - 10];
+  if (z <= 18) return [3, z];
+  if (z <= 36) return [4, z - 18];
+  if (z <= 54) return [5, z - 36];
+  if (z <= 56) return [6, z - 54];
+  if (z <= 71) return [9, z - 54];
+  if (z <= 86) return [6, z - 68];
+  if (z <= 88) return [7, z - 86];
+  if (z <= 103) return [10, z - 86];
+  return [7, z - 100];
+}
+
+const ptModal = document.getElementById("ptModal");
+const pt = document.getElementById("pt");
+const ptClose = document.getElementById("ptClose");
+const readout = document.getElementById("readout");
+const cells = [];
+for (let z = 1; z <= 118; z++){
+  const [r, c] = ptPos(z);
+  const d = document.createElement("div");
+  d.className = "cell";
+  d.style.gridRow = r; d.style.gridColumn = c;
+  d.dataset.z = z;
+  d.innerHTML = `<i>${z}</i><b>${SYM[z - 1]}</b>`;
+  pt.appendChild(d);
+  cells.push(d);
+}
+[[6, "57–71"], [7, "89–103"]].forEach(([r, t]) => {
+  const l = document.createElement("div");
+  l.className = "lbl"; l.style.gridRow = r; l.textContent = t;
+  pt.appendChild(l);
+});
+
+function showRead(z){
+  const on = cells[z - 1].classList.contains("on");
+  const L = UI[lang];
+  readout.innerHTML = `<b>${SYM[z - 1]}</b>${NAMES[z - 1]} (${z})<span class="${on ? "yes" : "no"}">${on ? L.legOn : L.legOff}</span>`;
+  cells.forEach(c => c.classList.toggle("sel", c === cells[z - 1]));
+}
+["mouseover", "click"].forEach(ev => pt.addEventListener(ev, e => {
+  const c = e.target.closest(".cell");
+  if (c) showRead(+c.dataset.z);
+}));
+
+let ptOpener = null;
+function openPT(i, opener){
+  const L = UI[lang], it = instruments[i], set = new Set(it.elements);
+  ptOpener = opener;
+  document.getElementById("ptTitle").textContent = L.elTitle;
+  document.getElementById("ptSub").textContent = it.name;
+  document.getElementById("legOn").textContent = `${L.legOn} (${it.elements.length})`;
+  document.getElementById("legOff").textContent = L.legOff;
+  ptClose.setAttribute("aria-label", L.close);
+  readout.textContent = L.prompt;
+  document.getElementById("ptList").textContent = it.elements.map(s => NAMES[SYM.indexOf(s)]).join(", ");
+  pt.classList.remove("lit");
+  let k = 0;
+  cells.forEach((c, j) => {
+    const on = set.has(SYM[j]);
+    c.classList.toggle("on", on);
+    c.classList.remove("sel");
+    if (on) c.style.setProperty("--d", (k++ * 22) + "ms");
+  });
+  ptModal.classList.add("show");
+  document.getElementById("deck").inert = true;
+  requestAnimationFrame(() => requestAnimationFrame(() => pt.classList.add("lit")));
+  ptClose.focus({preventScroll:true});
+}
+function closePT(){
+  ptModal.classList.remove("show");
+  document.getElementById("deck").inert = false;
+  if (ptOpener) ptOpener.focus({preventScroll:true});
+}
+ptClose.addEventListener("click", closePT);
+ptModal.addEventListener("click", e => { if (e.target === ptModal) closePT(); });
+
 /* ============ Rendering ============ */
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" opacity=".25"/><path d="M8 12.5l3 3 5-6"/></svg>';
@@ -454,6 +612,7 @@ function renderDeck(){
           </div>
           <div class="bring">${bag}<div class="sec" style="margin:0"><h3>${esc(L.bring)}</h3></div><p>${esc(c.bring)}</p></div>
         </div>
+        ${it.elements ? `<button class="ptbtn" type="button" data-pt="${i}"><span class="ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><rect x="2" y="3" width="4" height="4" rx="1"/><rect x="7" y="3" width="4" height="4" rx="1" opacity=".5"/><rect x="12" y="3" width="4" height="4" rx="1" opacity=".5"/><rect x="17" y="3" width="4" height="4" rx="1"/><rect x="2" y="8" width="4" height="4" rx="1" opacity=".5"/><rect x="7" y="8" width="4" height="4" rx="1"/><rect x="12" y="8" width="4" height="4" rx="1" opacity=".5"/><rect x="17" y="8" width="4" height="4" rx="1" opacity=".5"/><rect x="2" y="13" width="4" height="4" rx="1"/><rect x="7" y="13" width="4" height="4" rx="1" opacity=".5"/><rect x="12" y="13" width="4" height="4" rx="1"/><rect x="17" y="13" width="4" height="4" rx="1" opacity=".5"/></svg></span><span>${esc(L.elBtn)}</span><span class="cnt">${it.elements.length}</span></button>` : ""}
         <details class="tech">
           <summary>${esc(L.tech)}</summary>
           <dl>
@@ -535,10 +694,19 @@ function closeDeck(){
 document.getElementById("explore").addEventListener("click", () => openDeck(0));
 document.getElementById("home").addEventListener("click", closeDeck);
 document.querySelectorAll("[data-lang-btn]").forEach(b => b.addEventListener("click", () => setLang(lang === "en" ? "ur" : "en")));
+track.addEventListener("click", e => {
+  const b = e.target.closest("[data-pt]");
+  if (b) openPT(+b.dataset.pt, b);
+});
 prev.addEventListener("click", () => go(idx - 1));
 next.addEventListener("click", () => go(idx + 1));
 
 window.addEventListener("keydown", e => {
+  if (ptModal.classList.contains("show")){
+    if (e.key === "Escape") closePT();
+    else if (e.key === "Tab"){ e.preventDefault(); ptClose.focus(); }
+    return;
+  }
   const open = document.body.classList.contains("open");
   if (!open){ if (e.key === "Enter" && document.activeElement === document.body) openDeck(0); return; }
   if (e.key === "ArrowRight") go(idx + 1);
