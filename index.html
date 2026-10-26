@@ -73,6 +73,7 @@ html[lang=ur] .chips button{line-height:1.9;padding:5px 16px}
 .hero-foot svg{width:18px;height:18px;color:var(--teal);flex:none}
 .hero-art{position:relative;margin-block:clamp(12px,2vw,28px);margin-inline:0 clamp(12px,2vw,28px);border-radius:clamp(24px,3vw,44px);overflow:hidden;background:hsl(190 25% 92%)}
 .hero-art svg.s{position:absolute;inset:0;width:100%;height:100%}
+.hero-art img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-art .band{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
 .hero-tag{position:absolute;inset-inline-start:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:16px;padding:12px 18px;font-size:.84rem;color:var(--ink-2);line-height:1.45;max-width:250px}
@@ -238,7 +239,7 @@ html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
   </div>
 
   <div class="hero-art" aria-hidden="true">
-    <svg class="s" id="heroStrata" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice"></svg>
+    <img class="hero-img" src="images/garl.jpg" alt="" loading="eager">
     <div class="hero-tag" data-i18n="tag"></div>
   </div>
 </section>
@@ -440,7 +441,7 @@ const instruments = [
       bring:"تیزاب میں گھلا ہوا نمونہ یا خالص پاؤڈر",
       wow:"اولمپک سوئمنگ پول میں گھلے ایک چٹکی نمک کی مقدار بھی درست ناپ سکتا ہے۔" } },
 
-  { name:"Remote Sensing & Mineral Geomatics", image:"images/remotesensing.jpg", resolution:"Sub-meter / Hyperspectral", target:"Terrains, Outcrops & Deposits", status:"Operational",
+  { name:"Remote Sensing & Mineral Geomatics", image:"images/remote.jpg", resolution:"Sub-meter / Hyperspectral", target:"Terrains, Outcrops & Deposits", status:"Operational",
     capabilities:["Multi-rotor & fixed-wing drone mapping","Hyperspectral VNIR & SWIR reflectance imaging","Field spectroradiometer outcrop verification","LiDAR 3D point-cloud & ArcGIS Pro spatial modeling"],
     en:{ tag:"Satellite & drone exploration", short:"Remote Sensing", q:"Where are mineral deposits located across the landscape?",
       simple:"Drones, hyperspectral sensors, and LiDAR scan large mountain ranges from the air, reading mineral spectral fingerprints to pinpoint deposits on GIS maps.",
@@ -498,7 +499,8 @@ function strata(svg, W, H, hue, animate){
   if (animate){ vein.setAttribute("class", "band"); vein.style.animationDelay = (veinIdx * 0.09 + 0.15) + "s"; }
   svg.appendChild(vein);
 }
-strata(document.getElementById("heroStrata"), 800, 900, 190, true);
+const heroStrata = document.getElementById("heroStrata");
+if (heroStrata) strata(heroStrata, 800, 900, 190, true);
 
 /* ============ Periodic table pop-up ============ */
 const ELEMENTS = "H Hydrogen,He Helium,Li Lithium,Be Beryllium,B Boron,C Carbon,N Nitrogen,O Oxygen,F Fluorine,Ne Neon,Na Sodium,Mg Magnesium,Al Aluminium,Si Silicon,P Phosphorus,S Sulfur,Cl Chlorine,Ar Argon,K Potassium,Ca Calcium,Sc Scandium,Ti Titanium,V Vanadium,Cr Chromium,Mn Manganese,Fe Iron,Co Cobalt,Ni Nickel,Cu Copper,Zn Zinc,Ga Gallium,Ge Germanium,As Arsenic,Se Selenium,Br Bromine,Kr Krypton,Rb Rubidium,Sr Strontium,Y Yttrium,Zr Zirconium,Nb Niobium,Mo Molybdenum,Tc Technetium,Ru Ruthenium,Rh Rhodium,Pd Palladium,Ag Silver,Cd Cadmium,In Indium,Sn Tin,Sb Antimony,Te Tellurium,I Iodine,Xe Xenon,Cs Caesium,Ba Barium,La Lanthanum,Ce Cerium,Pr Praseodymium,Nd Neodymium,Pm Promethium,Sm Samarium,Eu Europium,Gd Gadolinium,Tb Terbium,Dy Dysprosium,Ho Holmium,Er Erbium,Tm Thulium,Yb Ytterbium,Lu Lutetium,Hf Hafnium,Ta Tantalum,W Tungsten,Re Rhenium,Os Osmium,Ir Iridium,Pt Platinum,Au Gold,Hg Mercury,Tl Thallium,Pb Lead,Bi Bismuth,Po Polonium,At Astatine,Rn Radon,Fr Francium,Ra Radium,Ac Actinium,Th Thorium,Pa Protactinium,U Uranium,Np Neptunium,Pu Plutonium,Am Americium,Cm Curium,Bk Berkelium,Cf Californium,Es Einsteinium,Fm Fermium,Md Mendelevium,No Nobelium,Lr Lawrencium,Rf Rutherfordium,Db Dubnium,Sg Seaborgium,Bh Bohrium,Hs Hassium,Mt Meitnerium,Ds Darmstadtium,Rg Roentgenium,Cn Copernicium,Nh Nihonium,Fl Flerovium,Mc Moscovium,Lv Livermorium,Ts Tennessine,Og Oganesson".split(",").map(s => s.split(" "));
