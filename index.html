@@ -42,43 +42,77 @@ html[lang=en] .lang{font-family:'Noto Nastaliq Urdu',serif;font-size:1rem;paddin
 
 /* ---------- views ---------- */
 .view{position:fixed;inset:0;height:100dvh;transition:transform .9s cubic-bezier(.76,0,.24,1),opacity .6s ease}
-#hero{z-index:3;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+#hero{z-index:3;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
 #deck{z-index:1;display:grid;grid-template-rows:auto 1fr auto;opacity:0;pointer-events:none;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body.open #hero{transform:translateY(-100%)}
 body.open #deck{opacity:1;pointer-events:auto;transition-delay:.25s}
 
 /* ---------- hero ---------- */
-.hero-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:clamp(24px,4vw,56px) clamp(24px,5vw,80px) clamp(24px,4vw,48px);min-height:0}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.hero-main{max-width:700px;margin-block:auto}
-#hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.5rem,5.6vw,5.4rem);line-height:.98;letter-spacing:-.035em;text-wrap:balance}
-html[lang=ur] #hero h1{line-height:1.5;font-size:clamp(2rem,4.4vw,4.1rem)}
-#hero .lede{margin-top:clamp(16px,2.4vh,28px);font-size:clamp(1.05rem,1.45vw,1.3rem);line-height:1.5;color:var(--ink-2);max-width:30em}
-html[lang=ur] #hero .lede{line-height:2.1;font-size:clamp(.95rem,1.25vw,1.15rem)}
-.cta{margin-top:clamp(22px,3.6vh,40px);display:inline-flex;align-items:center;gap:14px;padding:8px;padding-inline-start:28px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:1.05rem;transition:background .25s,transform .25s}
-.cta .dot{width:46px;height:46px;border-radius:50%;background:var(--copper);display:grid;place-items:center;transition:transform .3s}
-.cta svg{width:20px;height:20px}
+.hero-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:clamp(18px,2.8vw,38px) clamp(20px,4vw,64px) clamp(16px,2.4vw,32px);min-height:0;overflow-y:auto;scrollbar-width:thin}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none}
+.hero-main{max-width:780px;margin-block:auto;display:flex;flex-direction:column;gap:clamp(12px,1.8vh,20px)}
+#hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,3.8vw,3.75rem);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+html[lang=ur] #hero h1{line-height:1.45;font-size:clamp(1.65rem,3vw,2.8rem)}
+#hero .lede{font-size:clamp(.98rem,1.2vw,1.15rem);line-height:1.45;color:var(--ink-2);max-width:36em}
+html[lang=ur] #hero .lede{line-height:2;font-size:clamp(.9rem,1.1vw,1.05rem)}
+
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.cta{display:inline-flex;align-items:center;gap:14px;padding:6px;padding-inline-start:24px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:.98rem;transition:background .25s,transform .25s;width:fit-content}
+.cta .dot{width:40px;height:40px;border-radius:50%;background:var(--copper);display:grid;place-items:center;transition:transform .3s}
+.cta svg{width:18px;height:18px}
 html[dir=rtl] .cta svg{transform:scaleX(-1)}
 .cta:hover{background:var(--teal-d)}
 .cta:hover .dot{transform:translateX(3px)}
 html[dir=rtl] .cta:hover .dot{transform:translateX(-3px)}
 .cta:active{transform:scale(.98)}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(18px,3vh,32px)}
-.chips button{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.92rem;font-weight:500;color:var(--ink);transition:border-color .2s,transform .2s,background .2s}
-.chips button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--copper);flex:none}
-.chips button:hover{border-color:var(--teal);background:#F0F8F8;transform:translateY(-1px)}
-html[lang=ur] .chips button{line-height:1.9;padding:5px 16px}
-.hero-foot{display:flex;flex-wrap:wrap;gap:10px 36px;font-size:.86rem;color:var(--ink-2)}
-.hero-foot div{display:flex;align-items:center;gap:10px}
-.hero-foot svg{width:18px;height:18px;color:var(--teal);flex:none}
-.hero-art{position:relative;margin-block:clamp(12px,2vw,28px);margin-inline:0 clamp(12px,2vw,28px);border-radius:clamp(24px,3vw,44px);overflow:hidden;background:hsl(190 25% 92%)}
+
+/* Hero sections (Taglines + Labs Directory) */
+.hero-sec{display:flex;flex-direction:column;gap:8px}
+.hero-sec-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+html[lang=ur] .hero-sec-head{font-size:.82rem;text-transform:none}
+.hero-sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* Tagline / Slide Title Chips */
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips button{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.82rem;font-weight:500;color:var(--ink);transition:border-color .2s,transform .2s,background .2s,box-shadow .2s}
+.chips button::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--copper);flex:none}
+.chips button:hover{border-color:var(--teal);background:#F0F8F8;transform:translateY(-1px);box-shadow:0 4px 10px -4px rgba(12,110,120,.2)}
+html[lang=ur] .chips button{line-height:1.8;padding:3px 13px;font-size:.8rem}
+
+/* All Laboratories Directory (Lower-left picture names) */
+.labs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:6px;direction:ltr}
+.lab-pill{display:flex;align-items:center;gap:9px;padding:6px 10px;border-radius:11px;background:rgba(255,255,255,.78);border:1px solid var(--line);text-align:left;transition:all .2s ease;min-width:0}
+.lab-pill:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(15,42,54,.28)}
+.lab-pill .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.73rem;color:var(--teal);background:var(--tint);padding:2px 6px;border-radius:6px;flex:none;transition:background .2s,color .2s}
+.lab-pill:hover .num{background:var(--copper);color:#fff}
+.lab-pill .nm{font-family:'Figtree',sans-serif;font-size:.8rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.lab-pill .arr{width:13px;height:13px;opacity:0;transform:translateX(-4px);transition:all .2s ease;flex:none;color:var(--copper)}
+.lab-pill:hover .arr{opacity:1;transform:translateX(0)}
+
+.hero-foot{display:flex;flex-wrap:wrap;gap:10px 32px;font-size:.82rem;color:var(--ink-2);flex:none}
+.hero-foot div{display:flex;align-items:center;gap:9px}
+.hero-foot svg{width:17px;height:17px;color:var(--teal);flex:none}
+
+/* Stylish 800x700 Hero Visual Column */
+.hero-visual{display:flex;align-items:center;justify-content:center;padding:clamp(14px,2.4vw,32px);padding-inline-start:0;min-height:0;min-width:0}
+html[dir=rtl] .hero-visual{padding-inline-start:clamp(14px,2.4vw,32px);padding-inline-end:0}
+.hero-art{position:relative;width:100%;max-width:min(100%,calc((100dvh - 56px) * (800 / 700)));aspect-ratio:800 / 700;border-radius:clamp(22px,2.6vw,38px);overflow:hidden;background:hsl(190 25% 92%);box-shadow:0 26px 60px -18px rgba(15,42,54,.24),0 0 0 1px rgba(15,42,54,.08)}
+.hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,54,.05) 0%,transparent 35%,transparent 60%,rgba(15,42,54,.55) 100%);pointer-events:none}
 .hero-art svg.s{position:absolute;inset:0;width:100%;height:100%}
-.hero-art img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-art img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.hero-art:hover img.hero-img{transform:scale(1.03)}
 .hero-art .band{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
-.hero-tag{position:absolute;inset-inline-start:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:16px;padding:12px 18px;font-size:.84rem;color:var(--ink-2);line-height:1.45;max-width:250px}
-html[lang=ur] .hero-tag{line-height:2}
-.hero-tag b{display:block;color:var(--ink);font-family:var(--display);font-size:1.7rem;font-weight:700;line-height:1.1}
+
+.hero-badge-top{position:absolute;z-index:2;inset-inline-start:clamp(14px,1.8vw,24px);top:clamp(14px,1.8vw,24px);display:inline-flex;align-items:center;gap:8px;background:rgba(15,42,54,.78);backdrop-filter:blur(10px);color:#fff;padding:7px 14px;border-radius:999px;font-size:.78rem;font-weight:600;direction:ltr;border:1px solid rgba(255,255,255,.16)}
+.hero-badge-top .pulse{width:8px;height:8px;border-radius:50%;background:#26D07C;box-shadow:0 0 0 4px rgba(38,208,124,.25)}
+
+.hero-tag{position:absolute;z-index:2;inset-inline-start:clamp(14px,1.8vw,24px);bottom:clamp(14px,1.8vw,24px);background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-radius:18px;padding:12px 18px;font-size:.82rem;color:var(--ink-2);line-height:1.4;max-width:255px;box-shadow:0 12px 30px -10px rgba(15,42,54,.3)}
+html[lang=ur] .hero-tag{line-height:1.95}
+.hero-tag b{display:block;color:var(--ink);font-family:var(--display);font-size:1.65rem;font-weight:700;line-height:1.05;margin-bottom:2px}
+
+.hero-preview-pill{position:absolute;z-index:2;inset-inline-end:clamp(14px,1.8vw,24px);bottom:clamp(14px,1.8vw,24px);direction:ltr;background:rgba(15,42,54,.84);backdrop-filter:blur(10px);color:#fff;border-radius:12px;padding:8px 14px;font-size:.78rem;font-weight:500;line-height:1.3;border:1px solid rgba(255,255,255,.15);max-width:48%;transition:opacity .25s,transform .25s}
+.hero-preview-pill small{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:#F3A871;font-weight:700;margin-bottom:2px}
 
 /* ---------- deck ---------- */
 .bar,.foot{direction:ltr}
@@ -188,11 +222,12 @@ html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- responsive ---------- */
-@media (max-width:900px){
-  #hero{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 24dvh}
+@media (max-width:980px){
+  #hero{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
   .hero-copy{padding-bottom:8px}
-  .hero-art{margin:0 12px 12px}
-  .hero-foot,.hero-tag{display:none}
+  .hero-visual{padding:0 16px 14px !important}
+  .hero-art{max-height:24dvh;width:100%;max-width:none}
+  .hero-foot,.hero-tag,.hero-preview-pill{display:none}
   .slide{grid-template-columns:1fr;grid-template-rows:minmax(0,30dvh) minmax(0,1fr);gap:12px}
   .info{justify-content:flex-start;padding:0 !important}
   .pic .big{font-size:3.4rem}
@@ -200,8 +235,9 @@ html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
   .rail button{font-size:0 !important;padding-top:14px}
   .arrow{width:44px;height:44px}
 }
-@media (max-width:900px) and (max-height:760px){.chips{display:none}}
-@media (min-width:901px) and (max-height:720px){.hero-foot{display:none}.chips{display:none}}
+@media (max-width:600px){
+  .labs-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
 }
@@ -223,13 +259,29 @@ html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
     </div>
 
     <div class="hero-main">
-      <h1 data-i18n="title"></h1>
-      <p class="lede" data-i18n="lede"></p>
-      <button class="cta" id="explore" type="button">
-        <span data-i18n="cta"></span>
-        <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </button>
-      <div class="chips" id="chips"></div>
+      <div>
+        <h1 data-i18n="title"></h1>
+        <p class="lede" data-i18n="lede"></p>
+      </div>
+
+      <div class="hero-actions">
+        <button class="cta" id="explore" type="button">
+          <span data-i18n="cta"></span>
+          <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </button>
+      </div>
+
+      <!-- Slide Taglines / Questions -->
+      <div class="hero-sec">
+        <div class="hero-sec-head"><span data-i18n="taglinesHeading"></span></div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <!-- List of All 11 Laboratories (From Lower-Left Corner of All Slides) -->
+      <div class="hero-sec">
+        <div class="hero-sec-head"><span data-i18n="labsHeading"></span></div>
+        <div class="labs-grid" id="heroLabs"></div>
+      </div>
     </div>
 
     <div class="hero-foot">
@@ -238,9 +290,21 @@ html[lang=ur] .read,html[lang=ur] .legend{line-height:1.9}
     </div>
   </div>
 
-  <div class="hero-art" aria-hidden="true">
-    <img class="hero-img" src="images/garl.jpg" alt="" loading="eager">
-    <div class="hero-tag" data-i18n="tag"></div>
+  <!-- Stylish 800x700 Aspect Ratio Picture Frame -->
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-art">
+      <svg class="s" id="heroStrata" viewBox="0 0 800 700" preserveAspectRatio="xMidYMid slice"></svg>
+      <img class="hero-img" id="heroImg" src="images/garl.jpg" alt="">
+      <div class="hero-badge-top">
+        <span class="pulse"></span>
+        <span>GARL • 800 × 700</span>
+      </div>
+      <div class="hero-tag" data-i18n="tag"></div>
+      <div class="hero-preview-pill" id="heroPreviewPill">
+        <small>Featured Lab</small>
+        <span id="heroPreviewName">Scanning Electron Microscope</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -288,6 +352,8 @@ const UI = {
     title:"Geoscience Advanced Research Laboratories",
     lede:"Bring us a rock, soil or water sample. We tell you what is inside it, and how much.",
     cta:"Explore the laboratories",
+    taglinesHeading:"Quick Questions & Slide Taglines",
+    labsHeading:"All 11 Research Laboratories (Direct Access)",
     iso:"ISO/IEC 17025 accredited",
     gsp:"Affiliated with the Geological Survey of Pakistan",
     tag:"<b>11</b>laboratories, from preparing your sample to the final result",
@@ -300,6 +366,8 @@ const UI = {
     title:"جیو سائنس ایڈوانسڈ ریسرچ لیبارٹریز",
     lede:"ہمارے پاس چٹان، مٹی یا پانی کا نمونہ لائیں۔ ہم بتائیں گے کہ اس میں کیا کیا ہے اور کتنا ہے۔",
     cta:"لیبارٹریز دیکھیں",
+    taglinesHeading:"اہم سوالات اور سلائیڈ کے عنوانات",
+    labsHeading:"تمام 11 ریسرچ لیبارٹریز کی فہرست",
     iso:"آئی ایس او / آئی ای سی 17025 سے منظور شدہ",
     gsp:"جیولوجیکل سروے آف پاکستان سے وابستہ",
     tag:"<b>11</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
@@ -464,7 +532,7 @@ const QUICK = [
   { lab:8, en:"Is my water safe?", ur:"کیا میرا پانی محفوظ ہے؟" }
 ];
 
-/* ============ Strata artwork (hero + image fallback) ============ */
+/* ============ Strata artwork (800x700 hero + image fallback) ============ */
 const NS = "http://www.w3.org/2000/svg";
 function strata(svg, W, H, hue, animate){
   svg.innerHTML = "";
@@ -500,7 +568,9 @@ function strata(svg, W, H, hue, animate){
   svg.appendChild(vein);
 }
 const heroStrata = document.getElementById("heroStrata");
-if (heroStrata) strata(heroStrata, 800, 900, 190, true);
+if (heroStrata) strata(heroStrata, 800, 700, 190, true);
+const heroImg = document.getElementById("heroImg");
+if (heroImg) heroImg.addEventListener("error", e => e.target.remove());
 
 /* ============ Periodic table pop-up ============ */
 const ELEMENTS = "H Hydrogen,He Helium,Li Lithium,Be Beryllium,B Boron,C Carbon,N Nitrogen,O Oxygen,F Fluorine,Ne Neon,Na Sodium,Mg Magnesium,Al Aluminium,Si Silicon,P Phosphorus,S Sulfur,Cl Chlorine,Ar Argon,K Potassium,Ca Calcium,Sc Scandium,Ti Titanium,V Vanadium,Cr Chromium,Mn Manganese,Fe Iron,Co Cobalt,Ni Nickel,Cu Copper,Zn Zinc,Ga Gallium,Ge Germanium,As Arsenic,Se Selenium,Br Bromine,Kr Krypton,Rb Rubidium,Sr Strontium,Y Yttrium,Zr Zirconium,Nb Niobium,Mo Molybdenum,Tc Technetium,Ru Ruthenium,Rh Rhodium,Pd Palladium,Ag Silver,Cd Cadmium,In Indium,Sn Tin,Sb Antimony,Te Tellurium,I Iodine,Xe Xenon,Cs Caesium,Ba Barium,La Lanthanum,Ce Cerium,Pr Praseodymium,Nd Neodymium,Pm Promethium,Sm Samarium,Eu Europium,Gd Gadolinium,Tb Terbium,Dy Dysprosium,Ho Holmium,Er Erbium,Tm Thulium,Yb Ytterbium,Lu Lutetium,Hf Hafnium,Ta Tantalum,W Tungsten,Re Rhenium,Os Osmium,Ir Iridium,Pt Platinum,Au Gold,Hg Mercury,Tl Thallium,Pb Lead,Bi Bismuth,Po Polonium,At Astatine,Rn Radon,Fr Francium,Ra Radium,Ac Actinium,Th Thorium,Pa Protactinium,U Uranium,Np Neptunium,Pu Plutonium,Am Americium,Cm Curium,Bk Berkelium,Cf Californium,Es Einsteinium,Fm Fermium,Md Mendelevium,No Nobelium,Lr Lawrencium,Rf Rutherfordium,Db Dubnium,Sg Seaborgium,Bh Bohrium,Hs Hassium,Mt Meitnerium,Ds Darmstadtium,Rg Roentgenium,Cn Copernicium,Nh Nihonium,Fl Flerovium,Mc Moscovium,Lv Livermorium,Ts Tennessine,Og Oganesson".split(",").map(s => s.split(" "));
@@ -509,22 +579,11 @@ const NAMES = ELEMENTS.map(e => e[1]);
 
 /* ---- Scientifically verified elements each instrument measures reliably ---- */
 const EL = {
-  // SEM-EDS (Silicon Drift Detector): Boron (Z=5) to Uranium (Z=92) micro-spot analysis, excluding noble gases & short-lived radioisotopes
   semeds: "B C N O F Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Th U".split(" "),
-
-  // Benchtop EDXRF: Sodium (Z=11) to Uranium (Z=92) reliable screening & quantification in geological pellets (excludes ultra-trace PGMs & overlapped heavy lanthanides)
   edxrf: "Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Hf Ta W Pt Au Hg Tl Pb Bi Th U".split(" "),
-
-  // Agilent MP-AES: Official nitrogen-plasma atomic emission wavelength table (60 elements)
   mpaes: "Li Be B Na Mg Al Si P K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu W Re Pt Au Tl Pb Bi".split(" "),
-
-  // WDXRF: Fluorine (Z=9) to Uranium (Z=92) high-precision whole-rock major oxides & trace elements on fused beads/pressed pellets
   xrf: "F Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Yb Hf Ta W Pt Au Hg Tl Pb Bi Th U".split(" "),
-
-  // AAS (Flame, Graphite Furnace & Hydride/Cold-Vapor Generation): 38 standard high-accuracy single-element assays
   aas: "Li Be Na Mg Al Si K Ca Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Rb Sr Mo Rh Pd Ag Cd In Sn Sb Te Cs Ba Pt Au Hg Tl Pb Bi".split(" "),
-
-  // Agilent Single-Quadrupole ICP-MS (with He-collision cell): 73 elements from Li (Z=3) to U (Z=92) down to ppt-ppq levels
   icpms: "Li Be B Na Mg Al Si P S K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Th U".split(" ")
 };
 instruments[0].elements = EL.semeds;  // Scanning Electron Microscope (EDS)
@@ -619,6 +678,7 @@ ptModal.addEventListener("click", e => { if (e.target === ptModal) closePT(); })
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" opacity=".25"/><path d="M8 12.5l3 3 5-6"/></svg>';
 const bag = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1.5 12h-15L6 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg>';
+const miniArr = '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 const track = document.getElementById("track");
 const rail = document.getElementById("rail");
@@ -685,14 +745,39 @@ function renderDeck(){
 function renderHero(){
   const L = UI[lang];
   document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = L[el.dataset.i18n]; });
-  document.getElementById("chips").innerHTML = "";
+
+  /* Populate quick tagline chips */
+  const chipsEl = document.getElementById("chips");
+  chipsEl.innerHTML = "";
   QUICK.forEach(q => {
     const b = document.createElement("button");
     b.type = "button";
     b.textContent = q[lang];
     b.addEventListener("click", () => openDeck(q.lab));
-    document.getElementById("chips").appendChild(b);
+    chipsEl.appendChild(b);
   });
+
+  /* Populate all 11 labs list (matching the lower-left .tn names on each slide picture) */
+  const heroLabsEl = document.getElementById("heroLabs");
+  const previewName = document.getElementById("heroPreviewName");
+  heroLabsEl.innerHTML = "";
+  instruments.forEach((it, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "lab-pill";
+    btn.title = `${it.name} — ${it[lang].q}`;
+    btn.innerHTML = `
+      <span class="num">${String(i + 1).padStart(2, "0")}</span>
+      <span class="nm">${esc(it.name)}</span>
+      ${miniArr}
+    `;
+    btn.addEventListener("mouseenter", () => {
+      if (previewName) previewName.textContent = `${String(i + 1).padStart(2, "0")} · ${it.name}`;
+    });
+    btn.addEventListener("click", () => openDeck(i));
+    heroLabsEl.appendChild(btn);
+  });
+
   document.querySelectorAll("[data-lang-btn]").forEach(b => { b.textContent = L.switchTo; });
 }
 
