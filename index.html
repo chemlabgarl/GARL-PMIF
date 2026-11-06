@@ -624,21 +624,21 @@ html[lang="ur"] .chips button {
   font-size: 0.75rem;
 }
 
-/* All 11 Laboratories Directory Bento Grid (Expands to eliminate dead space) */
+/* All 12 Laboratories Directory Bento Grid (Expands to eliminate dead space) */
 .labs-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(182px, 1fr));
-  grid-auto-rows: 1fr;
-  gap: 6px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  gap: clamp(7px, 0.9vh, 11px);
   direction: ltr;
 }
 
 .lab-pill {
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 7px 10px;
+  gap: clamp(7px, 0.65vw, 11px);
+  padding: clamp(8px, 0.85vw, 13px) clamp(9px, 0.9vw, 14px);
   border-radius: 12px;
   background: var(--paper);
   backdrop-filter: blur(12px);
@@ -670,10 +670,10 @@ html[data-theme="dark"] .lab-pill.active-preview {
 .lab-pill .num {
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 0.68rem;
+  font-size: clamp(0.72rem, 0.82vw, 0.88rem);
   color: var(--teal);
   background: var(--tint);
-  padding: 3px 6px;
+  padding: 4px 7px;
   border-radius: 6px;
   flex: none;
   transition: background 0.2s, color 0.2s;
@@ -693,41 +693,8 @@ html[data-theme="dark"] .lab-pill.active-preview {
 
 .lab-pill .nm {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.77rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.lab-pill .sub-spec {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  opacity: 0.65;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Hero directory: larger, responsive text that uses the available card space */
-.labs-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(6, minmax(0, 1fr));
-  gap: clamp(7px, 0.9vh, 11px);
-}
-
-.lab-pill {
-  gap: clamp(7px, 0.65vw, 11px);
-  padding: clamp(8px, 0.85vw, 13px) clamp(9px, 0.9vw, 14px);
-}
-
-.lab-pill .num {
-  font-size: clamp(0.72rem, 0.82vw, 0.88rem);
-  padding: 4px 7px;
-}
-
-.lab-pill .nm {
   font-size: clamp(0.84rem, 1.05vw, 1.08rem);
+  font-weight: 600;
   line-height: 1.18;
   white-space: normal;
   overflow: visible;
@@ -736,7 +703,9 @@ html[data-theme="dark"] .lab-pill.active-preview {
 }
 
 .lab-pill .sub-spec {
+  font-family: var(--mono);
   font-size: clamp(0.66rem, 0.78vw, 0.82rem);
+  opacity: 0.65;
   line-height: 1.2;
   white-space: normal;
   overflow: visible;
@@ -752,7 +721,6 @@ html[data-theme="dark"] .lab-pill.active-preview {
   outline-offset: 4px;
   border-radius: 4px;
 }
-
 
 .lab-pill .arr {
   width: 13px;
@@ -1703,7 +1671,7 @@ details.tech dd {
 .rail {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(11, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -2122,7 +2090,7 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
           <span data-i18n="iso"></span>
         </div>
         <div class="hero-stat-pills" dir="ltr">
-          <span>11 LABS</span>
+          <span>12 LABS</span>
           <span>0.8 nm – Sub-ppt</span>
         </div>
       </div>
@@ -2138,7 +2106,7 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
       </div>
     </div>
 
-    <!-- Full-Height Interactive Directory (Taglines + 11 Labs Bento Grid) -->
+    <!-- Full-Height Interactive Directory (Taglines + 12 Labs Bento Grid) -->
     <div class="hero-directory-wrap">
       <!-- Slide Taglines / Questions -->
       <div class="hero-sec">
@@ -2146,7 +2114,7 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
         <div class="chips" id="chips"></div>
       </div>
 
-      <!-- List of All 11 Laboratories -->
+      <!-- List of All 12 Laboratories -->
       <div class="hero-sec hero-sec-labs">
         <div class="hero-sec-head"><span data-i18n="labsHeading"></span></div>
         <div class="labs-grid" id="heroLabs"></div>
@@ -2172,13 +2140,13 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
       <img class="hero-img" id="heroImg" src="images/garl.jpg" alt="">
       <div class="hero-badge-top">
         <span class="pulse"></span>
-        <span id="heroBadgeCode">GARL • 11 LABS</span>
+        <span id="heroBadgeCode">GARL • 12 LABS</span>
       </div>
       <div class="hero-spec-badge" id="heroSpecBadge">0.8 nm – Sub-ppt</div>
       <div class="hero-tag" data-i18n="tag"></div>
       <div class="hero-preview-pill" id="heroPreviewPill">
         <small><span id="heroPreviewTag">Featured Lab</span> <span>↗</span></small>
-        <span id="heroPreviewName">Scanning Electron Microscope</span>
+        <span id="heroPreviewName">Crushing & Pulverizing Lab</span>
       </div>
     </div>
   </div>
@@ -2193,7 +2161,7 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
     </button>
 
     <div class="deck-status">
-      <div class="count" aria-live="polite"><b id="cur">01</b> / 11</div>
+      <div class="count" aria-live="polite"><b id="cur">01</b> / 12</div>
     </div>
 
     <div class="top-controls">
@@ -2247,10 +2215,10 @@ const UI = {
     lede:"Bring us a rock, soil or water sample. We tell you what is inside it, and how much.",
     cta:"Explore the laboratories",
     taglinesHeading:"Quick Questions & Slide Taglines",
-    labsHeading:"All 11 Research Laboratories (Direct Access)",
+    labsHeading:"All 12 Research Laboratories (Direct Access)",
     iso:"ISO/IEC 17025 accredited",
     gsp:"Affiliated with the Geological Survey of Pakistan",
-    tag:"<b>11</b>laboratories, from preparing your sample to the final result",
+    tag:"<b>12</b>laboratories, from preparing your sample to the final result",
     home:"Home", lab:"Lab", simple:"In simple words", get:"What you get", bring:"What to bring", tech:"Technical Specifications",
     elBtn:"Which elements can it analyse?", elTitle:"Elements it measures reliably", legOn:"Reliably analysed", legOff:"Not analysed", prompt:"Hover or tap an element to see its name", close:"Close",
     switchTo:"اردو"
@@ -2261,31 +2229,19 @@ const UI = {
     lede:"ہمارے پاس چٹان، مٹی یا پانی کا نمونہ لائیں۔ ہم بتائیں گے کہ اس میں کیا کیا ہے اور کتنا ہے۔",
     cta:"لیبارٹریز دیکھیں",
     taglinesHeading:"اہم سوالات اور سلائیڈ کے عنوانات",
-    labsHeading:"تمام 11 ریسرچ لیبارٹریز کی فہرست",
+    labsHeading:"تمام 12 ریسرچ لیبارٹریز کی فہرست",
     iso:"آئی ایس او / آئی ای سی 17025 سے منظور شدہ",
     gsp:"جیولوجیکل سروے آف پاکستان سے وابستہ",
-    tag:"<b>11</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
+    tag:"<b>12</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
     home:"ہوم", lab:"لیب", simple:"آسان الفاظ میں", get:"آپ کو کیا ملے گا", bring:"کیا لانا ہے", tech:"تکنیکی تفصیل",
     elBtn:"یہ کون سے عناصر ناپ سکتا ہے؟", elTitle:"وہ عناصر جنہیں یہ قابلِ اعتماد طور پر ناپتا ہے", legOn:"قابلِ اعتماد تجزیہ", legOff:"تجزیہ نہیں ہوتا", prompt:"عنصر کا نام دیکھنے کے لیے اس پر ٹیپ کریں", close:"بند کریں",
     switchTo:"English"
   }
 };
 
-/* ============ 11 Research Laboratories ============ */
+/* ============ 12 Research Laboratories (In Requested Sequence) ============ */
 const instruments = [
-  { name:"Scanning Electron Microscope", image:"images/sem.jpeg", resolution:"0.8 nm", target:"Thin Sections & Mounts", status:"Operational",
-    capabilities:["High-resolution imaging","Energy-dispersive spectrometry (EDS)","Backscatter electron contrast","Mineral texture analysis"],
-    en:{ tag:"Close-up view", short:"Close-up", q:"What does your rock look like up close?",
-      simple:"A super-powerful magnifying glass. It shows the tiny grains and crystals inside a rock that your eyes can never see.",
-      get:["What tiny grains and crystals your rock is made of","How the minerals are arranged and joined","Where valuable minerals hide inside the rock"],
-      bring:"A small rock chip or a polished sample",
-      wow:"Sees details tens of thousands of times thinner than a human hair." },
-    ur:{ tag:"قریب سے دیکھیں", short:"قریب سے", q:"آپ کی چٹان قریب سے کیسی دکھتی ہے؟",
-      simple:"یہ ایک انتہائی طاقتور محدب عدسہ ہے۔ یہ چٹان کے اندر کے وہ باریک ذرات اور قلمیں دکھاتا ہے جو آنکھ سے نظر نہیں آتیں۔",
-      get:["چٹان کن باریک ذرات اور قلموں سے بنی ہے","معدنیات آپس میں کیسے جڑے اور ترتیب میں ہیں","قیمتی معدنیات چٹان میں کہاں چھپے ہیں"],
-      bring:"چٹان کا چھوٹا ٹکڑا یا پالش کیا ہوا نمونہ",
-      wow:"بال سے دسیوں ہزار گنا باریک تفصیل بھی دیکھ لیتا ہے۔" } },
-
+  /* 1. Preparation */
   { name:"Crushing & Pulverizing Lab", image:"images/crushing.png", resolution:"< 75 μm (200 mesh)", target:"Whole Rock & Cores", status:"Operational",
     capabilities:["Jaw crushing & coarse sizing","Tungsten carbide & agate milling","Automated riffle splitting","Contamination-free pulverizing"],
     en:{ tag:"Sample preparation", short:"Preparation", q:"How is your rock prepared for testing?",
@@ -2299,58 +2255,7 @@ const instruments = [
       bring:"پتھر کے ٹکڑے یا ڈرل کور",
       wow:"سخت چٹان کو آٹے جتنا باریک پیس دیتا ہے۔" } },
 
-  { name:"X-Ray Diffraction (XRD) System", image:"images/xrd.webp", resolution:"< 0.03° 2θ", target:"Powders & Clays", status:"Operational",
-    capabilities:["Crystalline phase identification","Clay mineral diagnostics","Lattice strain calculation","Quantitative Rietveld analysis"],
-    en:{ tag:"Mineral identity", short:"Minerals", q:"Which minerals are inside your rock?",
-      simple:"Every mineral has its own hidden fingerprint made by its atoms. We shine X-rays on the powder and read that fingerprint to name each mineral.",
-      get:["The name of every mineral present","How much of each mineral there is","Which types of clay are in your soil"],
-      bring:"A small amount of fine powder",
-      wow:"Recognises minerals by their atomic fingerprint, even when you cannot see them." },
-    ur:{ tag:"معدنیات کی پہچان", short:"معدنیات", q:"آپ کی چٹان میں کون سے معدنیات ہیں؟",
-      simple:"ہر معدن کے ایٹموں کی اپنی ایک منفرد انگلی کی چھاپ ہوتی ہے۔ ہم پاؤڈر پر ایکس رے ڈالتے ہیں اور اس چھاپ کو پڑھ کر ہر معدن کا نام بتاتے ہیں۔",
-      get:["ہر موجود معدن کا نام","ہر معدن کی مقدار","مٹی میں کس قسم کی چکنی مٹی (کلے) ہے"],
-      bring:"باریک پاؤڈر کی تھوڑی سی مقدار",
-      wow:"معدنیات کو ان کی ایٹمی چھاپ سے پہچانتا ہے، چاہے آنکھ سے نظر نہ آئیں۔" } },
-
-  { name:"Energy Dispersive XRF (EDXRF)", image:"images/edxrf.jpeg", resolution:"135 eV (Mn Kα)", target:"Pressed Pellets & Beads", status:"Operational",
-    capabilities:["Non-destructive multi-element screening","Major oxide screening (SiO₂, Al₂O₃, Fe₂O₃)","Trace heavy metal detection","Fast qualitative spectral profiling"],
-    en:{ tag:"Quick scan", short:"Quick scan", q:"Which elements are in your sample? Know in minutes.",
-      simple:"A quick scan that uses X-rays to show which elements are present, from the lightest to the heaviest. Your sample is not damaged or used up.",
-      get:["A fast check for metals like iron, copper and zinc","The rock's main makeup, such as silica and alumina","Early warning of harmful heavy metals"],
-      bring:"Powder, which we press into a small disc",
-      wow:"From sodium to uranium: most of the periodic table in one quick scan." },
-    ur:{ tag:"فوری اسکین", short:"فوری اسکین", q:"آپ کے نمونے میں کون سے عناصر ہیں؟ چند منٹ میں جانیں۔",
-      simple:"ایک تیز اسکین جو ایکس رے کے ذریعے بتاتا ہے کہ نمونے میں کون سے عناصر موجود ہیں۔ آپ کا نمونہ خراب یا ختم نہیں ہوتا۔",
-      get:["لوہا، تانبا اور جست جیسی دھاتوں کی فوری جانچ","چٹان کی بنیادی ساخت، جیسے سلیکا اور ایلومینا","نقصان دہ بھاری دھاتوں کی بروقت نشاندہی"],
-      bring:"پاؤڈر، جسے ہم چھوٹی ٹکیہ کی شکل میں دباتے ہیں",
-      wow:"سوڈیم سے یورینیم تک: ایک ہی اسکین میں زیادہ تر عناصر کی جانچ۔" } },
-
-  { name:"Microwave Plasma AES (MP-AES)", image:"images/mpaes.webp", resolution:"Sub-ppb to ppm", target:"Digested Rock Solutions", status:"Operational",
-    capabilities:["High-throughput elemental profiling","Alkali & alkaline earth elements","Nitrogen-plasma optical emission","Acid digestion assay verification"],
-    en:{ tag:"Metal content", short:"Metals", q:"How much copper, lithium or other metal is in your ore?",
-      simple:"We dissolve your sample in acid and heat it in a glowing plasma. Each metal glows in its own colour, and the brightness tells us how much there is.",
-      get:["Exact amounts of metals such as copper, lithium and zinc","Even very tiny traces","Results for many samples at the same time"],
-      bring:"Rock powder or a liquid sample; we handle the dissolving",
-      wow:"Reads each metal by the colour of its glow in a plasma thousands of degrees hot." },
-    ur:{ tag:"دھاتوں کی مقدار", short:"دھاتیں", q:"آپ کے خام مال میں تانبا، لیتھیم یا دوسری دھات کتنی ہے؟",
-      simple:"ہم نمونے کو تیزاب میں گھولتے ہیں اور چمکتے پلازما میں گرم کرتے ہیں۔ ہر دھات اپنے مخصوص رنگ میں چمکتی ہے، اور چمک سے مقدار معلوم ہوتی ہے۔",
-      get:["تانبے، لیتھیم اور جست جیسی دھاتوں کی درست مقدار","انتہائی معمولی مقدار بھی","بہت سے نمونوں کے نتائج ایک ساتھ"],
-      bring:"چٹان کا پاؤڈر یا مائع نمونہ؛ گھولنے کا کام ہم کرتے ہیں",
-      wow:"ہزاروں ڈگری گرم پلازما میں ہر دھات کو اس کی چمک کے رنگ سے پہچانتا ہے۔" } },
-
-  { name:"X-Ray Fluorescence Spectrometer", image:"images/wdxrf.png", resolution:"0.5 ppm", target:"Fused Beads & Pellets", status:"Operational",
-    capabilities:["Whole-rock major oxide chemistry","Trace element determination","Matrix-corrected quantification","High-throughput batch testing"],
-    en:{ tag:"Whole-rock chemistry", short:"Whole rock", q:"What is your whole rock made of, in exact percentages?",
-      simple:"We melt the powder into a small glass bead and X-ray it. The result is the complete chemical makeup of the rock, like an ingredients label.",
-      get:["The full chemical makeup of the rock","The percentage of each main ingredient (oxides)","Rare trace elements too"],
-      bring:"Rock powder",
-      wow:"Can detect as little as 0.5 gram of an element in one tonne of rock." },
-    ur:{ tag:"پوری چٹان کا تجزیہ", short:"پوری چٹان", q:"آپ کی پوری چٹان کس چیز سے بنی ہے، درست فیصد کے ساتھ؟",
-      simple:"ہم پاؤڈر کو پگھلا کر شیشے کی چھوٹی گولی بناتے ہیں اور اس پر ایکس رے ڈالتے ہیں۔ نتیجہ چٹان کی مکمل کیمیائی ترکیب ہوتی ہے، جیسے اجزا کی فہرست۔",
-      get:["چٹان کی مکمل کیمیائی ترکیب","ہر بنیادی جزو (آکسائیڈز) کا فیصد","نایاب، باریک مقدار والے عناصر بھی"],
-      bring:"چٹان کا پاؤڈر",
-      wow:"ایک ٹن چٹان میں سے صرف آدھا گرام عنصر بھی پکڑ لیتا ہے۔" } },
-
+  /* 2. Rock story */
   { name:"Petrology Laboratory", image:"images/petrology.jpg", resolution:"0.2 μm / Polarization", target:"Petrographic Thin Sections", status:"Operational",
     capabilities:["Polarized light thin-section microscopy","Optical mineral identification","Microstructural & fabric analysis","Modal point counting"],
     en:{ tag:"The rock's story", short:"Rock story", q:"What kind of rock is it, and how was it formed?",
@@ -2364,6 +2269,49 @@ const instruments = [
       bring:"چٹان کا ٹکڑا؛ باریک ٹکڑا ہم کاٹتے ہیں",
       wow:"چٹان اتنی باریک کاٹی جاتی ہے کہ روشنی آر پار گزر جائے۔" } },
 
+  /* 3. Minerals */
+  { name:"X-Ray Diffraction (XRD) System", image:"images/xrd.webp", resolution:"< 0.03° 2θ", target:"Powders & Clays", status:"Operational",
+    capabilities:["Crystalline phase identification","Clay mineral diagnostics","Lattice strain calculation","Quantitative Rietveld analysis"],
+    en:{ tag:"Mineral identity", short:"Minerals", q:"Which minerals are inside your rock?",
+      simple:"Every mineral has its own hidden fingerprint made by its atoms. We shine X-rays on the powder and read that fingerprint to name each mineral.",
+      get:["The name of every mineral present","How much of each mineral there is","Which types of clay are in your soil"],
+      bring:"A small amount of fine powder",
+      wow:"Recognises minerals by their atomic fingerprint, even when you cannot see them." },
+    ur:{ tag:"معدنیات کی پہچان", short:"معدنیات", q:"آپ کی چٹان میں کون سے معدنیات ہیں؟",
+      simple:"ہر معدن کے ایٹموں کی اپنی ایک منفرد انگلی کی چھاپ ہوتی ہے۔ ہم پاؤڈر پر ایکس رے ڈالتے ہیں اور اس چھاپ کو پڑھ کر ہر معدن کا نام بتاتے ہیں۔",
+      get:["ہر موجود معدن کا نام","ہر معدن کی مقدار","مٹی میں کس قسم کی چکنی مٹی (کلے) ہے"],
+      bring:"باریک پاؤڈر کی تھوڑی سی مقدار",
+      wow:"معدنیات کو ان کی ایٹمی چھاپ سے پہچانتا ہے، چاہے آنکھ سے نظر نہ آئیں۔" } },
+
+  /* 4. Quick scan */
+  { name:"Energy Dispersive XRF (EDXRF)", image:"images/edxrf.jpeg", resolution:"135 eV (Mn Kα)", target:"Pressed Pellets & Beads", status:"Operational",
+    capabilities:["Non-destructive multi-element screening","Major oxide screening (SiO₂, Al₂O₃, Fe₂O₃)","Trace heavy metal detection","Fast qualitative spectral profiling"],
+    en:{ tag:"Quick scan", short:"Quick scan", q:"Which elements are in your sample? Know in minutes.",
+      simple:"A quick scan that uses X-rays to show which elements are present, from the lightest to the heaviest. Your sample is not damaged or used up.",
+      get:["A fast check for metals like iron, copper and zinc","The rock's main makeup, such as silica and alumina","Early warning of harmful heavy metals"],
+      bring:"Powder, which we press into a small disc",
+      wow:"From sodium to uranium: most of the periodic table in one quick scan." },
+    ur:{ tag:"فوری اسکین", short:"فوری اسکین", q:"آپ کے نمونے میں کون سے عناصر ہیں؟ چند منٹ میں جانیں۔",
+      simple:"ایک تیز اسکین جو ایکس رے کے ذریعے بتاتا ہے کہ نمونے میں کون سے عناصر موجود ہیں۔ آپ کا نمونہ خراب یا ختم نہیں ہوتا۔",
+      get:["لوہا، تانبا اور جست جیسی دھاتوں کی فوری جانچ","چٹان کی بنیادی ساخت، جیسے سلیکا اور ایلومینا","نقصان دہ بھاری دھاتوں کی بروقت نشاندہی"],
+      bring:"پاؤڈر، جسے ہم چھوٹی ٹکیہ کی شکل میں دباتے ہیں",
+      wow:"سوڈیم سے یورینیم تک: ایک ہی اسکین میں زیادہ تر عناصر کی جانچ۔" } },
+
+  /* 5. Whole rock */
+  { name:"X-Ray Fluorescence Spectrometer", image:"images/wdxrf.png", resolution:"0.5 ppm", target:"Fused Beads & Pellets", status:"Operational",
+    capabilities:["Whole-rock major oxide chemistry","Trace element determination","Matrix-corrected quantification","High-throughput batch testing"],
+    en:{ tag:"Whole-rock chemistry", short:"Whole rock", q:"What is your whole rock made of, in exact percentages?",
+      simple:"We melt the powder into a small glass bead and X-ray it. The result is the complete chemical makeup of the rock, like an ingredients label.",
+      get:["The full chemical makeup of the rock","The percentage of each main ingredient (oxides)","Rare trace elements too"],
+      bring:"Rock powder",
+      wow:"Can detect as little as 0.5 gram of an element in one tonne of rock." },
+    ur:{ tag:"پوری چٹان کا تجزیہ", short:"پوری چٹان", q:"آپ کی پوری چٹان کس چیز سے بنی ہے، درست فیصد کے ساتھ؟",
+      simple:"ہم پاؤڈر کو پگھلا کر شیشے کی چھوٹی گولی بناتے ہیں اور اس پر ایکس رے ڈالتے ہیں۔ نتیجہ چٹان کی مکمل کیمیائی ترکیب ہوتی ہے، جیسے اجزا کی فہرست۔",
+      get:["چٹان کی مکمل کیمیائی ترکیب","ہر بنیادی جزو (آکسائیڈز) کا فیصد","نایاب، باریک مقدار والے عناصر بھی"],
+      bring:"چٹان کا پاؤڈر",
+      wow:"ایک ٹن چٹان میں سے صرف آدھا گرام عنصر بھی پکڑ لیتا ہے۔" } },
+
+  /* 6. Gold & silver */
   { name:"Atomic Absorption Spectrometer (AAS)", image:"images/aas.jpg", resolution:"0.01 - 0.1 ppm", target:"Aqueous & Acid Extracts", status:"Operational",
     capabilities:["Flame & graphite furnace analysis","Base & precious metal assay (Au, Ag, Cu)","Single-element high accuracy","Trace metal detection in leachates"],
     en:{ tag:"Gold, silver & copper", short:"Gold & silver", q:"How much gold, silver or copper is in your ore?",
@@ -2377,19 +2325,21 @@ const instruments = [
       bring:"چٹان کا پاؤڈر یا مائع نمونہ",
       wow:"فی ٹن تقریباً 0.01 گرام دھات تک ناپ سکتا ہے۔" } },
 
-  { name:"Environmental Geoscience Lab", image:"images/environmental.webp", resolution:"0.01 mg/L / 0.01 pH", target:"Water, Soils & Sediments", status:"Operational",
-    capabilities:["Water chemistry & ion balance","Soil pH, EC & leachability testing","Contaminant migration assessment","Total dissolved solids (TDS) analysis"],
-    en:{ tag:"Water & soil safety", short:"Water & soil", q:"Is your water and soil safe?",
-      simple:"We test drinking water, soil and river mud near mining areas for harmful metals and other pollution.",
-      get:["Whether the water is safe: acidity, salts and metals","Soil health, and whether metals can wash out of it","Whether mining is polluting its surroundings"],
-      bring:"Water in a clean bottle; soil or sediment in a sealed bag",
-      wow:"Catches pollution at levels no one can see, smell or taste." },
-    ur:{ tag:"پانی اور مٹی کی حفاظت", short:"پانی و مٹی", q:"کیا آپ کا پانی اور مٹی محفوظ ہے؟",
-      simple:"ہم کان کنی کے علاقوں کے قریب پینے کے پانی، مٹی اور دریائی تلچھٹ میں نقصان دہ دھاتوں اور آلودگی کی جانچ کرتے ہیں۔",
-      get:["پانی محفوظ ہے یا نہیں: تیزابیت، نمکیات اور دھاتیں","مٹی کی صحت، اور کیا دھاتیں اس سے بہہ کر نکل سکتی ہیں","کیا کان کنی آس پاس کو آلودہ کر رہی ہے"],
-      bring:"صاف بوتل میں پانی؛ مٹی یا تلچھٹ بند تھیلی میں",
-      wow:"ایسی آلودگی پکڑ لیتا ہے جو نہ نظر آتی ہے، نہ سونگھی یا چکھی جا سکتی ہے۔" } },
+  /* 7. Metals */
+  { name:"Microwave Plasma AES (MP-AES)", image:"images/mpaes.webp", resolution:"Sub-ppb to ppm", target:"Digested Rock Solutions", status:"Operational",
+    capabilities:["High-throughput elemental profiling","Alkali & alkaline earth elements","Nitrogen-plasma optical emission","Acid digestion assay verification"],
+    en:{ tag:"Metal content", short:"Metals", q:"How much copper, lithium or other metal is in your ore?",
+      simple:"We dissolve your sample in acid and heat it in a glowing plasma. Each metal glows in its own colour, and the brightness tells us how much there is.",
+      get:["Exact amounts of metals such as copper, lithium and zinc","Even very tiny traces","Results for many samples at the same time"],
+      bring:"Rock powder or a liquid sample; we handle the dissolving",
+      wow:"Reads each metal by the colour of its glow in a plasma thousands of degrees hot." },
+    ur:{ tag:"دھاتوں کی مقدار", short:"دھاتیں", q:"آپ کے خام مال میں تانبا، لیتھیم یا دوسری دھات کتنی ہے؟",
+      simple:"ہم نمونے کو تیزاب میں گھولتے ہیں اور چمکتے پلازما میں گرم کرتے ہیں۔ ہر دھات اپنے مخصوص رنگ میں چمکتی ہے، اور چمک سے مقدار معلوم ہوتی ہے۔",
+      get:["تانبے، لیتھیم اور جست جیسی دھاتوں کی درست مقدار","انتہائی معمولی مقدار بھی","بہت سے نمونوں کے نتائج ایک ساتھ"],
+      bring:"چٹان کا پاؤڈر یا مائع نمونہ؛ گھولنے کا کام ہم کرتے ہیں",
+      wow:"ہزاروں ڈگری گرم پلازما میں ہر دھات کو اس کی چمک کے رنگ سے پہچانتا ہے۔" } },
 
+  /* 8. ICP-MS */
   { name:"ICP-MS Agilent (Single Quadrupole)", image:"images/icpms.jpg", resolution:"Sub-ppt to ppq", target:"Digested Minerals & Waters", status:"Operational",
     capabilities:["Ultra-trace multi-element quantification","Full rare earth element (REE) package","Quadrupole mass filtration & He-collision cell","High-matrix sample introduction (UHMI)"],
     en:{ tag:"Ultra-trace elements", short:"ICP-MS", q:"Are there ultra-trace rare earths or precious metals in parts per trillion?",
@@ -2403,6 +2353,49 @@ const instruments = [
       bring:"تیزاب میں گھلا ہوا نمونہ یا خالص پاؤڈر",
       wow:"اولمپک سوئمنگ پول میں گھلے ایک چٹکی نمک کی مقدار بھی درست ناپ سکتا ہے۔" } },
 
+  /* 9. Close-up */
+  { name:"Scanning Electron Microscope", image:"images/sem.jpeg", resolution:"0.8 nm", target:"Thin Sections & Mounts", status:"Operational",
+    capabilities:["High-resolution imaging","Energy-dispersive spectrometry (EDS)","Backscatter electron contrast","Mineral texture analysis"],
+    en:{ tag:"Close-up view", short:"Close-up", q:"What does your rock look like up close?",
+      simple:"A super-powerful magnifying glass. It shows the tiny grains and crystals inside a rock that your eyes can never see.",
+      get:["What tiny grains and crystals your rock is made of","How the minerals are arranged and joined","Where valuable minerals hide inside the rock"],
+      bring:"A small rock chip or a polished sample",
+      wow:"Sees details tens of thousands of times thinner than a human hair." },
+    ur:{ tag:"قریب سے دیکھیں", short:"قریب سے", q:"آپ کی چٹان قریب سے کیسی دکھتی ہے؟",
+      simple:"یہ ایک انتہائی طاقتور محدب عدسہ ہے۔ یہ چٹان کے اندر کے وہ باریک ذرات اور قلمیں دکھاتا ہے جو آنکھ سے نظر نہیں آتیں۔",
+      get:["چٹان کن باریک ذرات اور قلموں سے بنی ہے","معدنیات آپس میں کیسے جڑے اور ترتیب میں ہیں","قیمتی معدنیات چٹان میں کہاں چھپے ہیں"],
+      bring:"چٹان کا چھوٹا ٹکڑا یا پالش کیا ہوا نمونہ",
+      wow:"بال سے دسیوں ہزار گنا باریک تفصیل بھی دیکھ لیتا ہے۔" } },
+
+  /* 10. Water & soil */
+  { name:"Environmental Geoscience Lab", image:"images/environmental.webp", resolution:"0.01 mg/L / 0.01 pH", target:"Water, Soils & Sediments", status:"Operational",
+    capabilities:["Water chemistry & ion balance","Soil pH, EC & leachability testing","Contaminant migration assessment","Total dissolved solids (TDS) analysis"],
+    en:{ tag:"Water & soil safety", short:"Water & soil", q:"Is your water and soil safe?",
+      simple:"We test drinking water, soil and river mud near mining areas for harmful metals and other pollution.",
+      get:["Whether the water is safe: acidity, salts and metals","Soil health, and whether metals can wash out of it","Whether mining is polluting its surroundings"],
+      bring:"Water in a clean bottle; soil or sediment in a sealed bag",
+      wow:"Catches pollution at levels no one can see, smell or taste." },
+    ur:{ tag:"پانی اور مٹی کی حفاظت", short:"پانی و مٹی", q:"کیا آپ کا پانی اور مٹی محفوظ ہے؟",
+      simple:"ہم کان کنی کے علاقوں کے قریب پینے کے پانی، مٹی اور دریائی تلچھٹ میں نقصان دہ دھاتوں اور آلودگی کی جانچ کرتے ہیں۔",
+      get:["پانی محفوظ ہے یا نہیں: تیزابیت، نمکیات اور دھاتیں","مٹی کی صحت، اور کیا دھاتیں اس سے بہہ کر نکل سکتی ہیں","کیا کان کنی آس پاس کو آلودہ کر رہی ہے"],
+      bring:"صاف بوتل میں پانی؛ مٹی یا تلچھٹ بند تھیلی میں",
+      wow:"ایسی آلودگی پکڑ لیتا ہے جو نہ نظر آتی ہے، نہ سونگھی یا چکھی جا سکتی ہے۔" } },
+
+  /* 11. Mercury Analyser */
+  { name:"Direct Mercury Analyzer (DMA)", image:"images/mercury.jpg", resolution:"0.005 ng Hg (Sub-ppb)", target:"Solids, Liquids & Sediments", status:"Operational",
+    capabilities:["Thermal decomposition & catalytic reduction","Gold amalgamation trapping","Cold vapor atomic absorption (CVAAS)","Acid-free direct solid & liquid mercury assay"],
+    en:{ tag:"Mercury detection", short:"Mercury", q:"Is there any toxic mercury in your rock, soil or water?",
+      simple:"We heat your sample directly to release any hidden mercury vapour, trap it on pure gold, and measure it with ultraviolet light—without needing any acid digestion.",
+      get:["Exact mercury (Hg) levels in rocks, coal, soils and water","Fast results in minutes with zero chemical waste","Environmental safety & pathfinder checks for gold deposits"],
+      bring:"Soil, sediment, rock powder or water in a tightly sealed container",
+      wow:"Detects a billionth of a gram of mercury directly from solid rock or water in minutes." },
+    ur:{ tag:"پارے (مرکری) کی جانچ", short:"مرکری اینالائزر", q:"کیا آپ کی چٹان، مٹی یا پانی میں زہریلا پارہ (مرکری) موجود ہے؟",
+      simple:"ہم نمونے کو براہِ راست گرم کر کے اس میں چھپے پارے کے بخارات نکالتے ہیں، انہیں خالص سونے پر روکتے ہیں اور الٹرا وائلٹ روشنی سے بغیر کسی تیزاب کے درست مقدار ناپتے ہیں۔",
+      get:["چٹان، کوئلے، مٹی اور پانی میں پارے (Hg) کی درست مقدار","بغیر کسی کیمیائی فضلے کے چند منٹوں میں تیز نتائج","ماحولیاتی تحفظ اور سونے کے ذخائر کی تلاش میں مددگار جانچ"],
+      bring:"مٹی، تلچھٹ، چٹان کا پاؤڈر یا پانی مضبوطی سے بند بوتل یا تھیلی میں",
+      wow:"گرام کے اربویں حصے جتنا پارہ بھی ٹھوس چٹان یا پانی سے براہِ راست چند منٹوں میں پکڑ لیتا ہے۔" } },
+
+  /* 12. Remote Sensing */
   { name:"Remote Sensing & Mineral Geomatics", image:"images/remote.jpg", resolution:"Sub-meter / Hyperspectral", target:"Terrains, Outcrops & Deposits", status:"Operational",
     capabilities:["Multi-rotor & fixed-wing drone mapping","Hyperspectral VNIR & SWIR reflectance imaging","Field spectroradiometer outcrop verification","LiDAR 3D point-cloud & ArcGIS Pro spatial modeling"],
     en:{ tag:"Satellite & drone exploration", short:"Remote Sensing", q:"Where are mineral deposits located across the landscape?",
@@ -2419,11 +2412,12 @@ const instruments = [
 
 /* Quick questions on the hero: label per language + which lab it opens */
 const QUICK = [
-  { lab:7, en:"Is there gold in my rock?", ur:"کیا میری چٹان میں سونا ہے؟" },
-  { lab:9, en:"Rare Earths & Ultra-trace?", ur:"نایاب زمینی عناصر (REE)؟" },
-  { lab:10, en:"Drone & Mineral mapping?", ur:"ڈرون اور معدنی نقشہ سازی؟" },
+  { lab:5, en:"Is there gold in my rock?", ur:"کیا میری چٹان میں سونا ہے؟" },
+  { lab:7, en:"Rare Earths & Ultra-trace?", ur:"نایاب زمینی عناصر (REE)؟" },
+  { lab:11, en:"Drone & Mineral mapping?", ur:"ڈرون اور معدنی نقشہ سازی؟" },
   { lab:2, en:"Which minerals does it hold?", ur:"اس میں کون سے معدنیات ہیں؟" },
-  { lab:8, en:"Is my water safe?", ur:"کیا میرا پانی محفوظ ہے؟" }
+  { lab:9, en:"Is my water safe?", ur:"کیا میرا پانی محفوظ ہے؟" },
+  { lab:10, en:"Mercury contamination check?", ur:"پارے (مرکری) کی جانچ؟" }
 ];
 
 /* ============ Enhanced Procedural Geological Strata Artwork ============ */
@@ -2504,6 +2498,37 @@ if (heroStrata) strata(heroStrata, 800, 700, 190, true);
 const heroImg = document.getElementById("heroImg");
 if (heroImg) heroImg.addEventListener("error", e => { e.target.style.display = "none"; });
 
+/* ============ Two Alternating Home Images (3-second delay) ============ */
+const HOME_IMAGES = [
+  "images/garl.jpg",
+  "images/fm.jpg"
+];
+let homeImgIndex = 0;
+let homeSlideTimer = null;
+
+function stopHomeSlideshow() {
+  if (homeSlideTimer) {
+    clearInterval(homeSlideTimer);
+    homeSlideTimer = null;
+  }
+}
+
+function setHomeHeroImage(idx) {
+  if (!heroImg) return;
+  heroImg.style.display = "";
+  heroImg.src = HOME_IMAGES[idx];
+  if (heroStrata) strata(heroStrata, 800, 700, idx === 0 ? 190 : 210, false);
+}
+
+function startHomeSlideshow() {
+  stopHomeSlideshow();
+  setHomeHeroImage(homeImgIndex);
+  homeSlideTimer = setInterval(() => {
+    homeImgIndex = (homeImgIndex + 1) % HOME_IMAGES.length;
+    setHomeHeroImage(homeImgIndex);
+  }, 3000);
+}
+
 let featuredHeroLabIdx = 0;
 let garlHomePreviewPinned = false;
 const heroArtCard = document.getElementById("heroArtCard");
@@ -2512,6 +2537,7 @@ if (heroArtCard) {
 }
 
 function updateHeroPreview(i) {
+  stopHomeSlideshow();
   garlHomePreviewPinned = false;
   featuredHeroLabIdx = i;
   const it = instruments[i];
@@ -2536,8 +2562,7 @@ function updateHeroPreview(i) {
   });
 }
 
-
-/* Show the GARL building/home image while the top GARL title is hovered or focused. */
+/* Show the alternating GARL building/home images when not hovering over a lab or whenGARL title is hovered/focused. */
 function showGarlHomePreview() {
   const previewName = document.getElementById("heroPreviewName");
   const previewTag = document.getElementById("heroPreviewTag");
@@ -2546,26 +2571,22 @@ function showGarlHomePreview() {
 
   if (previewName) previewName.textContent = "Geoscience Advance Research Laboratories";
   if (previewTag) previewTag.textContent = "GARL • Islamabad";
-  if (specBadge) specBadge.textContent = "11 Research Laboratories";
+  if (specBadge) specBadge.textContent = "12 Research Laboratories";
   if (badgeCode) badgeCode.textContent = "GARL • GSP ISLAMABAD";
-  if (heroImg) {
-    heroImg.style.display = "";
-    heroImg.src = "images/garl.jpg";
-  }
-  if (heroStrata) strata(heroStrata, 800, 700, 190, false);
   document.querySelectorAll(".lab-pill").forEach(pill => pill.classList.remove("active-preview"));
+
+  startHomeSlideshow();
 }
 
 const brandTitle = document.getElementById("brandTitle");
 if (brandTitle) {
-  // Hover previews the home image temporarily; clicking pins it until a lab is selected.
   brandTitle.addEventListener("mouseenter", showGarlHomePreview);
   brandTitle.addEventListener("mouseleave", () => {
-    if (!garlHomePreviewPinned) updateHeroPreview(featuredHeroLabIdx);
+    showGarlHomePreview();
   });
   brandTitle.addEventListener("focus", showGarlHomePreview);
   brandTitle.addEventListener("blur", () => {
-    if (!garlHomePreviewPinned) updateHeroPreview(featuredHeroLabIdx);
+    showGarlHomePreview();
   });
   brandTitle.addEventListener("click", event => {
     event.preventDefault();
@@ -2593,14 +2614,16 @@ const EL = {
   mpaes: "Li Be B Na Mg Al Si P K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu W Re Pt Au Tl Pb Bi".split(" "),
   xrf: "F Na Mg Al Si P S Cl K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Yb Hf Ta W Pt Au Hg Tl Pb Bi Th U".split(" "),
   aas: "Li Be Na Mg Al Si K Ca Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Rb Sr Mo Rh Pd Ag Cd In Sn Sb Te Cs Ba Pt Au Hg Tl Pb Bi".split(" "),
-  icpms: "Li Be B Na Mg Al Si P S K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Th U".split(" ")
+  icpms: "Li Be B Na Mg Al Si P S K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Rb Sr Y Zr Nb Mo Ru Rh Pd Ag Cd In Sn Sb Te I Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Th U".split(" "),
+  dma: ["Hg"]
 };
-instruments[0].elements = EL.semeds;  // Scanning Electron Microscope (EDS)
-instruments[3].elements = EL.edxrf;   // Energy Dispersive XRF (EDXRF)
-instruments[4].elements = EL.mpaes;   // Microwave Plasma AES (MP-AES)
-instruments[5].elements = EL.xrf;     // X-Ray Fluorescence Spectrometer (WDXRF)
-instruments[7].elements = EL.aas;     // Atomic Absorption Spectrometer (AAS)
-instruments[9].elements = EL.icpms;   // ICP-MS Agilent (Single Quadrupole)
+instruments[3].elements = EL.edxrf;   // 04: Energy Dispersive XRF (EDXRF)
+instruments[4].elements = EL.xrf;     // 05: X-Ray Fluorescence Spectrometer (WDXRF)
+instruments[5].elements = EL.aas;     // 06: Atomic Absorption Spectrometer (AAS)
+instruments[6].elements = EL.mpaes;   // 07: Microwave Plasma AES (MP-AES)
+instruments[7].elements = EL.icpms;   // 08: ICP-MS Agilent (Single Quadrupole)
+instruments[8].elements = EL.semeds;  // 09: Scanning Electron Microscope (EDS)
+instruments[10].elements = EL.dma;    // 11: Direct Mercury Analyzer (DMA)
 
 function ptPos(z){
   if (z === 1) return [1, 1];
@@ -2785,21 +2808,21 @@ function renderHero(){
 
   /* Populate quick tagline chips */
   const chipsEl = document.getElementById("chips");
-  chipsEl.addEventListener("mouseleave", () => { if (!garlHomePreviewPinned) showGarlHomePreview(); });
+  chipsEl.onmouseleave = () => { showGarlHomePreview(); };
   chipsEl.innerHTML = "";
   QUICK.forEach(q => {
     const b = document.createElement("button");
     b.type = "button";
     b.textContent = q[lang];
     b.addEventListener("mouseenter", () => updateHeroPreview(q.lab));
-    b.addEventListener("mouseleave", () => { if (!garlHomePreviewPinned) showGarlHomePreview(); });
+    b.addEventListener("mouseleave", () => showGarlHomePreview());
     b.addEventListener("click", () => openDeck(q.lab));
     chipsEl.appendChild(b);
   });
 
-  /* Populate all 11 labs directory */
+  /* Populate all 12 labs directory */
   const heroLabsEl = document.getElementById("heroLabs");
-  heroLabsEl.addEventListener("mouseleave", () => { if (!garlHomePreviewPinned) showGarlHomePreview(); });
+  heroLabsEl.onmouseleave = () => { showGarlHomePreview(); };
   heroLabsEl.innerHTML = "";
   instruments.forEach((it, i) => {
     const btn = document.createElement("button");
@@ -2816,8 +2839,8 @@ function renderHero(){
     `;
     btn.addEventListener("mouseenter", () => updateHeroPreview(i));
     btn.addEventListener("focus", () => updateHeroPreview(i));
-    btn.addEventListener("mouseleave", () => { if (!garlHomePreviewPinned) showGarlHomePreview(); });
-    btn.addEventListener("blur", () => { if (!garlHomePreviewPinned) showGarlHomePreview(); });
+    btn.addEventListener("mouseleave", () => showGarlHomePreview());
+    btn.addEventListener("blur", () => showGarlHomePreview());
     btn.addEventListener("click", () => openDeck(i));
     heroLabsEl.appendChild(btn);
   });
@@ -2859,6 +2882,7 @@ function go(n, quiet){
   next.disabled = idx === instruments.length - 1;
 }
 function openDeck(n = 0){
+  stopHomeSlideshow();
   document.body.classList.add("open");
   document.getElementById("hero").inert = true;
   document.getElementById("deck").inert = false;
@@ -2869,6 +2893,7 @@ function closeDeck(){
   document.getElementById("hero").inert = false;
   document.getElementById("deck").inert = true;
   seen.clear();
+  showGarlHomePreview();
 }
 
 document.getElementById("explore").addEventListener("click", () => openDeck(0));
