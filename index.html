@@ -352,7 +352,7 @@ body.open #deck {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: clamp(14px, 1.6vw, 20px);
+  padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px) clamp(24px, 2.8vw, 36px);
   border-radius: 20px;
   background: var(--paper);
   backdrop-filter: blur(14px);
@@ -360,7 +360,7 @@ body.open #deck {
   border: 1px solid var(--line-strong);
   box-shadow: var(--shadow-sm);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-banner-card::before {
@@ -433,8 +433,11 @@ body.open #deck {
 }
 
 html[lang="ur"] #hero h1 {
-  line-height: 1.45;
+  line-height: 2.0;
   font-size: clamp(1.45rem, 2.1vw, 2.15rem);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  overflow: visible;
 }
 
 .hero-lede-cta {
@@ -452,6 +455,10 @@ html[lang="ur"] #hero h1 {
   color: var(--ink-2);
   flex: 1 1 240px;
   margin: 0;
+}
+
+html[lang="ur"] .hero-lede-cta {
+  padding-top: 10px;
 }
 
 html[lang="ur"] #hero .lede {
@@ -913,41 +920,6 @@ html[dir="rtl"] .hero-visual {
   font-weight: 600;
   direction: ltr;
   border: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.hero-tag {
-  position: absolute;
-  z-index: 4;
-  inset-inline-start: clamp(20px, 2.2vw, 30px);
-  bottom: clamp(20px, 2.2vw, 30px);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 20px;
-  padding: 14px 18px;
-  font-size: 0.8rem;
-  color: #2A434E;
-  line-height: 1.4;
-  max-width: 240px;
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-html[lang="ur"] .hero-tag {
-  line-height: 1.9;
-}
-
-.hero-tag b {
-  display: block;
-  color: #0B1D26;
-  font-family: var(--display);
-  font-size: 1.75rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 4px;
-  background: linear-gradient(135deg, #0B1D26 0%, #0D7A85 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero-preview-pill {
@@ -1690,6 +1662,9 @@ details.tech dd {
 }
 
 html[lang="ur"] .rail button {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   line-height: 1.85;
   padding-top: 6px;
   font-size: 0.74rem;
@@ -2008,7 +1983,7 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
     height: 100%;
     width: 100%;
   }
-  .hero-foot, .hero-tag {
+  .hero-foot {
     display: none;
   }
   .slide {
@@ -2143,7 +2118,6 @@ html[lang="ur"] .read, html[lang="ur"] .legend {
         <span id="heroBadgeCode">GARL • 12 LABS</span>
       </div>
       <div class="hero-spec-badge" id="heroSpecBadge">0.8 nm – Sub-ppt</div>
-      <div class="hero-tag" data-i18n="tag"></div>
       <div class="hero-preview-pill" id="heroPreviewPill">
         <small><span id="heroPreviewTag">Featured Lab</span> <span>↗</span></small>
         <span id="heroPreviewName">Crushing & Pulverizing Lab</span>
@@ -2218,7 +2192,6 @@ const UI = {
     labsHeading:"All 12 Research Laboratories (Direct Access)",
     iso:"ISO/IEC 17025 accredited",
     gsp:"Affiliated with the Geological Survey of Pakistan",
-    tag:"<b>12</b>laboratories, from preparing your sample to the final result",
     home:"Home", lab:"Lab", simple:"In simple words", get:"What you get", bring:"What to bring", tech:"Technical Specifications",
     elBtn:"Which elements can it analyse?", elTitle:"Elements it measures reliably", legOn:"Reliably analysed", legOff:"Not analysed", prompt:"Hover or tap an element to see its name", close:"Close",
     switchTo:"اردو"
@@ -2232,7 +2205,6 @@ const UI = {
     labsHeading:"تمام 12 ریسرچ لیبارٹریز کی فہرست",
     iso:"آئی ایس او / آئی ای سی 17025 سے منظور شدہ",
     gsp:"جیولوجیکل سروے آف پاکستان سے وابستہ",
-    tag:"<b>12</b>لیبارٹریز، نمونہ تیار کرنے سے لے کر حتمی نتیجے تک",
     home:"ہوم", lab:"لیب", simple:"آسان الفاظ میں", get:"آپ کو کیا ملے گا", bring:"کیا لانا ہے", tech:"تکنیکی تفصیل",
     elBtn:"یہ کون سے عناصر ناپ سکتا ہے؟", elTitle:"وہ عناصر جنہیں یہ قابلِ اعتماد طور پر ناپتا ہے", legOn:"قابلِ اعتماد تجزیہ", legOff:"تجزیہ نہیں ہوتا", prompt:"عنصر کا نام دیکھنے کے لیے اس پر ٹیپ کریں", close:"بند کریں",
     switchTo:"English"
